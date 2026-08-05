@@ -1,0 +1,21 @@
+import { BookOpen } from 'lucide-react'
+import type { Source } from '../types/chat'
+
+interface SourceCardProps {
+  source: Source
+}
+
+export function SourceCard({ source }: SourceCardProps) {
+  return (
+    <article className="source-card">
+      <div className="source-icon" aria-hidden>
+        <BookOpen size={16} />
+      </div>
+      <div className="source-body">
+        <div className="source-doc">{source.document}</div>
+        <div className="source-section">{source.section}</div>
+        {source.snippet && <div className="source-snippet">{source.snippet}</div>}
+      </div>
+    </article>
+  )
+}

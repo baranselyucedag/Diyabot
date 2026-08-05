@@ -1,0 +1,21 @@
+# Tip-2 Diyabet Chatbot — Python bağımlılıkları
+# Kurulum: pip install -r requirements.txt
+
+# Retrieval (mevcut)
+numpy>=1.26
+torch>=2.1
+sentence-transformers>=3.0
+
+# API
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.0
+openai>=1.40
+python-dotenv>=1.0
+
+# Eval (Ragas)
+# Chat cevap = Nemotron (src/api/llm.py). Judge = GPT / OpenAI (src/eval/ragas_score.py).
+# answer_relevancy yok (embedding ister).
+ragas>=0.3
+
+# Not: NVIDIA_API_KEY ve OPENAI_API_KEY → frontend/.env (VITE_ öneki olmadan).
