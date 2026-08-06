@@ -27,3 +27,8 @@ Thumbs.db
 # Local caches / temp
 *.log
 .cache/
+
+# Folder
+
+scripts/
+docs/

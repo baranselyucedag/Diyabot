@@ -1,0 +1,4579 @@
+[
+  {
+    "id": 1,
+    "question": "İki gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 2,
+    "question": "Beş gündür midem bulanıyor.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 3,
+    "question": "Yedi gündür ayağımda yara var.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 4,
+    "question": "On gündür şekerim 250 civarında.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 5,
+    "question": "Üç gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 6,
+    "question": "Birkaç gündür kendimi kötü hissediyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 7,
+    "question": "Haftadır şekerim düzelmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 8,
+    "question": "Aydır tansiyonum da yüksek çıkıyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 9,
+    "question": "Uzun süredir şeker kontrolüm bozuldu.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 10,
+    "question": "Bir türlü düzelmiyor şekerim.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 11,
+    "question": "Hâlâ geçmiyor bu halsizlik.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 12,
+    "question": "Şekerim bir türlü inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 13,
+    "question": "Dört gündür ishalim var.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 14,
+    "question": "Altı gündür gece terlemeleri oluyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 15,
+    "question": "Sekiz gündür başım dönüyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 16,
+    "question": "12 gündür ayak parmağım kızarık.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 17,
+    "question": "İki gündür kusuyorum az az.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 18,
+    "question": "Beş gündür ilaç yan etkisi gibi.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 19,
+    "question": "Üç gündür grip gibiyim şeker karışık.",
+    "soft_flags": [
+      "uc_gundur",
+      "hasta_gunu"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 20,
+    "question": "Haftadır ölçümler tutmuyor.",
+    "soft_flags": [
+      "uc_gundur",
+      "hasta_gunu"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 21,
+    "question": "Birkaç gündür çok susuyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 22,
+    "question": "On gündür yara iyileşmiyor.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 23,
+    "question": "İki gündür şekerim düşük sabahları.",
+    "soft_flags": [
+      "uc_gundur",
+      "hipo_dil"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 24,
+    "question": "Üç gündür oruç tuttum şeker dalgalı.",
+    "soft_flags": [
+      "uc_gundur",
+      "gebelik_oruc"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 25,
+    "question": "Beş gündür keton bakıyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 26,
+    "question": "Dokuz gündür tansiyon yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 27,
+    "question": "Haftadan beri şeker yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 28,
+    "question": "Aydan beri kontrolüm kötü.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 29,
+    "question": "Uzun süredir düzelmiyor bu durum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 30,
+    "question": "Hâlâ düzelmiyor midem.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 31,
+    "question": "Şekerim çıkmıyor bir türlü hedeften.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 32,
+    "question": "İki gündür kötüye gidiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 33,
+    "question": "7 gündür şikayetim var.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 34,
+    "question": "15 gündür ayak şiş.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 35,
+    "question": "Üç gündür hiç iyi değilim.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 36,
+    "question": "İki gündür kitap okuyorum diyabet hakkında.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 37,
+    "question": "Üç gündür tatildeyim şekerim normal.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 38,
+    "question": "Beş gündür yeni diyete başladım.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 39,
+    "question": "Haftadır spor yapıyorum devam edeyim mi?",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 40,
+    "question": "Üç gündür sensörüm çalışıyor değerler stabil.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 41,
+    "question": "İki gündür sadece sebze yedim.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 42,
+    "question": "Birkaç gündür forum okuyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 43,
+    "question": "On gündür uygulama kurdum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 44,
+    "question": "Haftadır eğitim videosu izliyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 45,
+    "question": "Aydır bu kitabı bitiremiyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": false
+  },
+  {
+    "id": 46,
+    "question": "Şekerim 320 çıktı çok yüksek ne yapmalıyım?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 47,
+    "question": "Kan şekerim çok yüksek ölçülüyor.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 48,
+    "question": "Açlık şekerim 280 çok yüksek diyor cihaz.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 49,
+    "question": "Tokluk şekerim çok yüksek çıktı midem bulanıyor.",
+    "soft_flags": [
+      "cok_yuksek",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 50,
+    "question": "Gece ölçtüm 350 çok yüksek korktum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 51,
+    "question": "Şekerim çok yüksek sanırım sürekli susuyorum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 52,
+    "question": "Ölçüm sonucu çok yüksek geldi doktora gideyim mi?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 53,
+    "question": "Sabah şekerim çok yüksek çıkıyor neden?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 54,
+    "question": "Şekerim 290 çıktı çok yüksek ne içeyim?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 55,
+    "question": "Tokluk şekerim çok yüksek 240 civarı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 56,
+    "question": "Çok yüksek çıkan değerler için ne zaman doktora?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 57,
+    "question": "Şekerim 310 çok yüksek ve kusuyorum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 58,
+    "question": "Çok yüksek çıkan HbA1c için ne değiştirmeliyim?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 59,
+    "question": "Şeker kontrolüm çok yüksek seviyede gidiyor.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 60,
+    "question": "Aşırı yüksek çıktı son ölçümüm.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 61,
+    "question": "Şekerim 400 çok yüksek üç gündür böyle.",
+    "soft_flags": [
+      "cok_yuksek",
+      "uc_gundur"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 62,
+    "question": "Kan şekerim hızla yükseliyor çok yüksek alarmı da verdi.",
+    "soft_flags": [
+      "cok_yuksek",
+      "hizli_degisim"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 63,
+    "question": "Ölçüm çok yüksek geldi midem bulanıyor.",
+    "soft_flags": [
+      "cok_yuksek",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 64,
+    "question": "Şekerim çok yüksek 380 kusma da var.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 65,
+    "question": "Açlık çok yüksek 200 üstü.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 66,
+    "question": "Diyabette motivasyonum çok yüksek böyle devam.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 67,
+    "question": "Çok yüksek kaliteli bir sensör önerir misin?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 68,
+    "question": "Risk çok yüksek mi diye korkuyorum ama şekerim normal.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 69,
+    "question": "Fiyatı çok yüksek ilaçlar kullanmak zorunda mıyım?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 70,
+    "question": "HbA1c hedefim çok yüksek tutulmuş olabilir mi?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 71,
+    "question": "Egzersiz motivasyonum çok yüksek abartır mıyım?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 72,
+    "question": "Çok yüksek tansiyonum var şekerle ilişkili mi?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 73,
+    "question": "Bu markanın fiyatı çok yüksek.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 74,
+    "question": "Çok yüksek çözünürlüklü CGM var mı?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 75,
+    "question": "Motivasyonum çok yüksek diyete başladım.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 76,
+    "question": "Risk çok yüksek diye panik oldum ama ölçüm normal.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 77,
+    "question": "Çok yüksek puan aldım diyabet quizinde.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 78,
+    "question": "Mağazada çok yüksek indirim varmış şekersiz ürüne.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 79,
+    "question": "Çok yüksek kaliteli eğitim istiyorum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 80,
+    "question": "Aşırı yüksek motivasyonla başladım spora.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": false
+  },
+  {
+    "id": 81,
+    "question": "Şekerim 48 çok düşük hissediyorum.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 82,
+    "question": "Kan şekerim çok düşük çıktı ellerim titriyor.",
+    "soft_flags": [
+      "cok_dusuk",
+      "hipo_dil"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 83,
+    "question": "Gece şekerim çok düşük çıktı terleyerek uyandım.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 84,
+    "question": "Ölçüm 55 çok düşük diyor cihaz ne yemeliyim?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 85,
+    "question": "Spor sonrası şekerim çok düşük oldu.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 86,
+    "question": "Şekerim çok düşük sanırım başım dönüyor.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 87,
+    "question": "İnsülin sonrası çok düşük çıkıyor ölçümlerim.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 88,
+    "question": "Ölçüm çok düşük 42 hemen bir şey yemeli miyim?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 89,
+    "question": "Açlık şekerim çok düşük 60'ın altına iniyor.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 90,
+    "question": "Kan şekerim çok düşük alarmı verdi 15-15 uygulayayım mı?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 91,
+    "question": "Şekerim 40 çok düşük konuşmam zorlaşıyor.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 92,
+    "question": "Tokluk şekerim beklediğimden çok düşük geldi iyi mi?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 93,
+    "question": "Aşırı düşük çıktı gece ölçümüm.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 94,
+    "question": "Sabahları çok düşük görüyorum.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 95,
+    "question": "CGM çok düşük uyarısı verdi.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 96,
+    "question": "Karbonhidrat oranı çok düşük diyet uygun mu?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 97,
+    "question": "Mağazada fiyatlar çok düşük diye şekerli ürün aldım.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 98,
+    "question": "Maliyet çok düşük olsun diye jenerik alabilir miyim?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 99,
+    "question": "Risk çok düşük diye ihmal etmeyeyim mi kontrolleri?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 100,
+    "question": "Motivasyonum çok düşük diyabete devam edemiyorum.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 101,
+    "question": "Çok düşük karbonhidratlı menü örnekleri verir misin?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 102,
+    "question": "Protein oranı çok düşük menü mü öneriyorsun?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 103,
+    "question": "Kolesterolüm çok düşük çıktı diyabet ilacı mı etkiledi?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 104,
+    "question": "Çok düşük doz eğitim videosu var mı?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 105,
+    "question": "Fiyatı çok düşük bir glukometre öner.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 106,
+    "question": "Çok düşük kalorili liste istiyorum.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 107,
+    "question": "Risk çok düşük görünüyor lab sonuçlarımda.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 108,
+    "question": "Çok düşük bütçeyle beslenme öner.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 109,
+    "question": "Aşırı düşük karbonhidrat moda mı?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 110,
+    "question": "Mağazada çok düşük fiyatlı şeker gördüm.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 111,
+    "question": "Şekerim hızla yükseliyor 180'den 280'e çıktı.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 112,
+    "question": "Kan şekerim hızla düşüyor ne yapmalıyım?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 113,
+    "question": "Yemekten sonra şekerim hızla yükseliyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 114,
+    "question": "İnsülin sonrası şekerim hızla düşüyor korkuyorum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 115,
+    "question": "CGM'de grafik hızla yükseliyor müdahale edeyim mi?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 116,
+    "question": "Hastayken şekerim hızla yükseliyor gibi.",
+    "soft_flags": [
+      "hizli_degisim",
+      "hasta_gunu"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 117,
+    "question": "Egzersiz sırasında şekerim hızla düşüyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 118,
+    "question": "Sabaha karşı şekerim hızla yükseliyor dawn mı?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 119,
+    "question": "Sensör okuması hızla düşüyor ama kendimi iyi hissediyorum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 120,
+    "question": "Şeker eğrisi hızla yükseliyor diye alarm veriyor telefon.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 121,
+    "question": "Grafikte şeker hızla yükseliyor yemek mi yedim unuttum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 122,
+    "question": "Şekerim hızla düşüyor 70'ten 50'ye indi.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 123,
+    "question": "CGM okuması hızla yükseliyor kalibrasyon mu bozuk?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 124,
+    "question": "Şekerim hızla yükseliyor ama henüz 160 bekleyeyim mi?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 125,
+    "question": "Birden düştü şekerim.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 126,
+    "question": "Ani yükseldi ölçümüm.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 127,
+    "question": "Grafik birden fırladı.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 128,
+    "question": "Okuma ani çöktü.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 129,
+    "question": "Alarm verdi telefon şeker için.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 130,
+    "question": "Uyarı geldi CGM'den.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 131,
+    "question": "Sensör hızla yükseliyor gösteriyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 132,
+    "question": "Birden yükseldi tokluk değerim.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 133,
+    "question": "Ani düştü spor sonrası.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 134,
+    "question": "Hızla düşüyor gece grafiği.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 135,
+    "question": "Alarm çaldı gece yarısı.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 136,
+    "question": "Alarm verdi kapı zili sandım.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": false
+  },
+  {
+    "id": 137,
+    "question": "Grafik hızla yükseliyor oyun skorumda.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": false
+  },
+  {
+    "id": 138,
+    "question": "Birden düştü telefon şarjım.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": false
+  },
+  {
+    "id": 139,
+    "question": "Ani yükseldi kargo fiyatları.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": false
+  },
+  {
+    "id": 140,
+    "question": "Şekerim düştü ellerim titriyor.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 141,
+    "question": "Şekerim düşüyor başım dönüyor.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 142,
+    "question": "Hipo oldum galiba.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 143,
+    "question": "Hipo oluyor sık sık.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 144,
+    "question": "Ellerim titriyor şeker mi düştü?",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 145,
+    "question": "Titriyorum açlık hissi var.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 146,
+    "question": "Açlık hissi geldi ölçeyim mi?",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 147,
+    "question": "Şekerim düşük çıktı.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 148,
+    "question": "Şeker düşük geldi cihaz.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 149,
+    "question": "Şekerim düşmüş gece.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 150,
+    "question": "İnsülin sonrası şekerim düştü.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 151,
+    "question": "Spor sonrası şeker düştü.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 152,
+    "question": "Hipo yaptı bu sabah.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 153,
+    "question": "Şekerim düşüyor gibi terliyorum.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 154,
+    "question": "Kan şekerim düştü midem kazınıyor.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 155,
+    "question": "Şeker düşüyor alarmı olmadan hissettim.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 156,
+    "question": "Ellerim titriyor konuşurken.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 157,
+    "question": "Hipo yasiyorum son günlerde.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 158,
+    "question": "Şekerim düştü araba kullanırken.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 159,
+    "question": "Şeker düştü 15 gram alayım mı?",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 160,
+    "question": "Titreme başladı hipo mu?",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 161,
+    "question": "Açlık hissiyle uyandım.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 162,
+    "question": "Şekerim düşüyor spor salonunda.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 163,
+    "question": "Hipo oldum işte.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 164,
+    "question": "Şeker düşmüş sabah ölçümünde.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 165,
+    "question": "Kan şekerim düşüyor yavaş yavaş.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 166,
+    "question": "Ellerim titriyor kahvaltı öncesi.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 167,
+    "question": "Şekerim düşük hissettiriyor.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 168,
+    "question": "Hipo oluyor geceleri.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 169,
+    "question": "Sesim titriyor heyecandan.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": false
+  },
+  {
+    "id": 170,
+    "question": "Şekerim yükseldi sürekli susuyorum.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 171,
+    "question": "Şekerim yükseliyor ağızım kurudu.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 172,
+    "question": "Şeker yüksek çıktı.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 173,
+    "question": "Şekerim yüksek geldi toklukta.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 174,
+    "question": "Çok susuyorum sık idrara çıkıyorum.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 175,
+    "question": "Ağzım kurudu su içiyorum.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 176,
+    "question": "Sık idrar oluyor şeker mi yükseldi?",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 177,
+    "question": "Şekerim yükselmiş sabah.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 178,
+    "question": "Kan şekerim yükseliyor hastayken.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 179,
+    "question": "Şeker yükseldi gece.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 180,
+    "question": "Susadım çok şeker yüksek olabilir.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 181,
+    "question": "Ağız kuruluğu ve susama var.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 182,
+    "question": "Şekerim yüksek oldu yemekten sonra.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 183,
+    "question": "Toklukta şeker yükseldi.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 184,
+    "question": "Şeker yükseliyor CGM'de.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 185,
+    "question": "Sık idrara çıkıyorum geceleri.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 186,
+    "question": "Ağzım kuruyor sabahları.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 187,
+    "question": "Şekerim yükseldi midem bulanıyor.",
+    "soft_flags": [
+      "hiper_dil",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 188,
+    "question": "Kan şekerim yüksek çıktı 220.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 189,
+    "question": "Susama başladı ani.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 190,
+    "question": "Şekerim yükseliyor stresle.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 191,
+    "question": "Sıcaklık yükseldi odada susadım.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": false
+  },
+  {
+    "id": 192,
+    "question": "Arabayı yol kenarına çekmek zorunda kaldım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 193,
+    "question": "Merdivenden inerken bacaklarım tutmadı.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 194,
+    "question": "Elimde çatalı tutamadım düşürdüm.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 195,
+    "question": "İşte yazı yazarken harfleri karıştırdım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 196,
+    "question": "Toplantıdan çıkmak zorunda kaldım odaklanamadım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 197,
+    "question": "Fenalaştım evde oturdum.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 198,
+    "question": "Kendimde değilim biraz.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 199,
+    "question": "Direksiyon başında durmak zorunda kaldım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 200,
+    "question": "Bacaklarım titredi merdivende.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 201,
+    "question": "Odaklanamadım işte.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 202,
+    "question": "Tutamadım telefonu düşürdüm.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 203,
+    "question": "Fenalaşıyor gibi oldum markette.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 204,
+    "question": "Aracı çekmek zorunda kaldım kenara.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 205,
+    "question": "Karıştırdım sayıları ölçümde.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 206,
+    "question": "Bacaklarım güçsüz hissettirdi.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 207,
+    "question": "Toplantıda odaklanamadım çıktım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 208,
+    "question": "Fenalaştım spordan sonra.",
+    "soft_flags": [
+      "fonksiyonel_bozulma",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 209,
+    "question": "Yol kenarına çektim arabayı.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 210,
+    "question": "Düşürdüm bardağı ellerim titredi.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 211,
+    "question": "Kendimde değilim sabah kalkınca.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 212,
+    "question": "Tutamadım tempo sporda normal.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": false
+  },
+  {
+    "id": 213,
+    "question": "Karıştırdım randevu saatini.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": false
+  },
+  {
+    "id": 214,
+    "question": "Bu ay üçüncü kez aynı şey oldu.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 215,
+    "question": "Son zamanlarda sabahları hep böyle.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 216,
+    "question": "Her spordan sonra bu oluyor artık.",
+    "soft_flags": [
+      "oruntu_tekrar",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 217,
+    "question": "Geçen hafta da böyleydi bugün yine.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 218,
+    "question": "Yine oldu gece düşmesi.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 219,
+    "question": "Tekrar oluyor sabah yüksekleri.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 220,
+    "question": "Kaç kez oldu bu hipo bilmiyorum.",
+    "soft_flags": [
+      "hipo_dil",
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 221,
+    "question": "Her yemekten sonra yükseliyor.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 222,
+    "question": "Bu ay ikinci kez hastalandım şeker karıştı.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 223,
+    "question": "Son zamanlarda hep düşük sabah.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 224,
+    "question": "Tekrar aynı alarm geldi.",
+    "soft_flags": [
+      "hizli_degisim",
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 225,
+    "question": "Yine aynı değerler.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 226,
+    "question": "Her antrenman sonrası fenalaşıyorum.",
+    "soft_flags": [
+      "fonksiyonel_bozulma",
+      "oruntu_tekrar",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 227,
+    "question": "Geçen hafta da yine düştü.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 228,
+    "question": "Bazen böyle oluyor normal galiba.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": false
+  },
+  {
+    "id": 229,
+    "question": "Bu ay üçüncü kez markete gittim.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": false
+  },
+  {
+    "id": 230,
+    "question": "Yine aynı diziyi izledim.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": false
+  },
+  {
+    "id": 231,
+    "question": "Tekrar aynı şarkı çalıyor.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": false
+  },
+  {
+    "id": 232,
+    "question": "Dün akşamki iğneyi unutmuşum bu sabah farkedince iki kat yaptım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 233,
+    "question": "Sabah ilacını akşam da içmişim yanlışlıkla.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 234,
+    "question": "İnsülini yanlış kalemle yaptım galiba.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 235,
+    "question": "Ölçmeden tahminen doz yaptım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 236,
+    "question": "İğneyi unuttum dün.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 237,
+    "question": "İlacımı unuttum sabah.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 238,
+    "question": "Fazla insülin yaptım korkuyorum.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 239,
+    "question": "İki kat yaptım yanlışlıkla.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 240,
+    "question": "Çift aldım hapı.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 241,
+    "question": "Yanlış doz vurmuş olabilirim.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 242,
+    "question": "Tahminen insulin yaptım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 243,
+    "question": "Ölçmeden yaptım iğneyi.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 244,
+    "question": "Hapımı unuttum iki gün.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 245,
+    "question": "Yanlış insulin kalemi kullandım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 246,
+    "question": "Fazla hap içtim.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 247,
+    "question": "Akşam ilacı sabah da içtim yanlışlıkla.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 248,
+    "question": "İnsülini unuttum yemekten sonra.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 249,
+    "question": "İki kat vurdum bazalı.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 250,
+    "question": "Yanlış iğneyi yaptım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 251,
+    "question": "Artık ölçmekten bıktım umursamıyorum.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 252,
+    "question": "Kontrolü bıraktım bir süredir.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 253,
+    "question": "Zaten bir şey değişmiyor boş verdim.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 254,
+    "question": "Doktora gitmeyi bırakalı aylar oldu.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 255,
+    "question": "Diyabetten yoruldum.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 256,
+    "question": "Ölçmeyi bıraktım.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 257,
+    "question": "Tedaviyi bıraktım kendi kararımla.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 258,
+    "question": "Umursamıyorum artık şekeri.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 259,
+    "question": "Bos verdim diyet işini.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 260,
+    "question": "Kontrolden usandım.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 261,
+    "question": "Diyabeti bıraktım kafamda.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 262,
+    "question": "Ölçmekten usandım.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 263,
+    "question": "Doktora gitmeyi bıraktım.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 264,
+    "question": "Boşverdim hapları.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 265,
+    "question": "Umursamıyorum spoilerları dizide.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": false
+  },
+  {
+    "id": 266,
+    "question": "Kontrolü bıraktım oyun hesabında.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": false
+  },
+  {
+    "id": 267,
+    "question": "Sabahları yastığım terden ıslak oluyor.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 268,
+    "question": "Gece kabus görüp terleyerek uyanıyorum.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 269,
+    "question": "Eşim gece tuhaf konuştuğumu söyledi.",
+    "soft_flags": [
+      "gece_hipo",
+      "ikinci_el"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 270,
+    "question": "Gece terleyerek uyandım.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 271,
+    "question": "Yastığım ıslak sabah.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 272,
+    "question": "Kabus sonrası ter içinde uyanıyorum.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 273,
+    "question": "Uyanınca şaşkınım.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 274,
+    "question": "Sabah terli uyandım.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 275,
+    "question": "Eşim dedi gece tuhaf konuşmuşum.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 276,
+    "question": "Uyanınca başım ağrıyor.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 277,
+    "question": "Kabus görüp uyandım terliyorum.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 278,
+    "question": "Yastığım ıslak yağmurdan pencere açıktı.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": false
+  },
+  {
+    "id": 279,
+    "question": "Uyanınca şaşkınım randevuyu unuttum.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": false
+  },
+  {
+    "id": 280,
+    "question": "Eşim gece dizi izlediğini söyledi.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 281,
+    "question": "Ayağımda bir yara var iyileşmiyor gibi.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 282,
+    "question": "Ayak yarası iyileşmiyor.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 283,
+    "question": "Ayak parmağım morardı.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 284,
+    "question": "Yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 285,
+    "question": "İğne yeri şiş ve kızarık.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 286,
+    "question": "Ayak kokuyor endişeliyim.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 287,
+    "question": "Enjeksiyon yeri sert.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 288,
+    "question": "Ayakta yara var.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 289,
+    "question": "Parmak siyahımsı görünüyor.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 290,
+    "question": "Yara iyileşmiyor parmağımda.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 291,
+    "question": "İğne yeri iltihap gibi.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 292,
+    "question": "Yara bandı iyileşmiyor demeyeyim küçük kesik.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": false
+  },
+  {
+    "id": 293,
+    "question": "Grip oldum şekerlerim çok karıştı ne yapacağımı bilmiyorum.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 294,
+    "question": "Mide bulantım var ilacımı almalı mıyım bilmiyorum.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 295,
+    "question": "Ateşim var ölçümler hiç tutmuyor son iki gündür.",
+    "soft_flags": [
+      "uc_gundur",
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 296,
+    "question": "Hastayken şekerim ne olur?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 297,
+    "question": "İshalim var metformin ne yapayım?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 298,
+    "question": "Kusma var ilacı keseyim mi?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 299,
+    "question": "Grip ve şeker birlikte zor.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 300,
+    "question": "Ateşliyken ölçüm karışık.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 301,
+    "question": "Hastayım ilaç alayım mı şeker için?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 302,
+    "question": "Ölçümler tutmuyor hastayken.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 303,
+    "question": "İshal + şeker ne yapmalı?",
+    "soft_flags": [
+      "hasta_gunu",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 304,
+    "question": "Mide bulantısı ilaç sorunu mu?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 305,
+    "question": "Hasta olduğumda şeker yükseliyor.",
+    "soft_flags": [
+      "hiper_dil",
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 306,
+    "question": "Ölçümler oynamaya başladı gripte.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 307,
+    "question": "İshal olmadan da karın ağrım var.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": false
+  },
+  {
+    "id": 308,
+    "question": "Ölçüm cihazım tutmuyor kalibrasyon.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": false
+  },
+  {
+    "id": 309,
+    "question": "Spordan saatler sonra fenalaştım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 310,
+    "question": "Antrenmandan bir gün sonra hala kendimde değilim.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 311,
+    "question": "Spordan sonra gece düştü şekerim.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 312,
+    "question": "Egzersiz sonrası tuhaf hissediyorum saatler sonra.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 313,
+    "question": "Koşu sonrası gece hipo gibi.",
+    "soft_flags": [
+      "hipo_dil",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 314,
+    "question": "Antrenman sonrası şeker düştü gecikmeli.",
+    "soft_flags": [
+      "hipo_dil",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 315,
+    "question": "Spordan saatler sonra terledim.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 316,
+    "question": "Gecikmiş hipo oldu spor sonrası.",
+    "soft_flags": [
+      "hipo_dil",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 317,
+    "question": "Egzersiz sonrası gece uyandım kötü.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 318,
+    "question": "Antrenman sonrası duş aldım.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": false
+  },
+  {
+    "id": 319,
+    "question": "Spordan sonra arkadaşlarla oturdum.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": false
+  },
+  {
+    "id": 320,
+    "question": "Dün gece içtim bu sabah tuhaf hissediyorum.",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 321,
+    "question": "İçki sonrası hipo oldu.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 322,
+    "question": "Alkol aldım şeker düştü.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 323,
+    "question": "İçtim dün şekerim garip.",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 324,
+    "question": "Biraz içtim sonra düştü ölçüm.",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 325,
+    "question": "Alkol ve hipo riski yaşadım.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 326,
+    "question": "İçki içtim gece şeker düşük.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 327,
+    "question": "Dün içtim sabah şeker tuhaf.",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 328,
+    "question": "Alkol sonrası susadım şeker yükseldi mi?",
+    "soft_flags": [
+      "hiper_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 329,
+    "question": "İçki tarifleri istiyorum şekersiz.",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 330,
+    "question": "Alkolsüz bira şekeri yükseltir mi?",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": false
+  },
+  {
+    "id": 331,
+    "question": "Hamileyim sahurda ilacımı unuttum kendimi kötü hissediyorum.",
+    "soft_flags": [
+      "uygulama_hatasi",
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 332,
+    "question": "Oruçluyken baş dönmesi oldu ama açmadım.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 333,
+    "question": "Gebeyim şekerim yükseldi.",
+    "soft_flags": [
+      "hiper_dil",
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 334,
+    "question": "Hamilelikte şeker düştü.",
+    "soft_flags": [
+      "hipo_dil",
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 335,
+    "question": "Oruç tutarken fenalaştım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma",
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 336,
+    "question": "Sahurda insülini unuttum.",
+    "soft_flags": [
+      "uygulama_hatasi",
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 337,
+    "question": "Oruçta başım döndü şeker mi?",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 338,
+    "question": "Hamileyim kötü hissediyorum.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 339,
+    "question": "Gebe şeker kontrolüm bozuldu.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 340,
+    "question": "Oruç açmadım ama kötüydüm.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  },
+  {
+    "id": 341,
+    "question": "Oruç tutuyorum şekerim gayet iyi.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": false
+  },
+  {
+    "id": 342,
+    "question": "Annemin şekeri dün çok kötüydü.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 343,
+    "question": "Eşim gece tuhaflaştı ben şeker ölçtüm.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 344,
+    "question": "Babamın şekeri yüksek çıktı.",
+    "soft_flags": [
+      "hiper_dil",
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 345,
+    "question": "Kardeşimin hiposu oldu.",
+    "soft_flags": [
+      "hipo_dil",
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 346,
+    "question": "Annem şeker düştü sandı.",
+    "soft_flags": [
+      "hipo_dil",
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 347,
+    "question": "Eşimin şekeri bozuldu.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 348,
+    "question": "Dedemin şekeri yüksek.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 349,
+    "question": "Ninemin şekeri düşük gelmiş.",
+    "soft_flags": [
+      "hipo_dil",
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 350,
+    "question": "Babam tuhaf hissediyormuş şeker.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 351,
+    "question": "Annemin şekeri için sordum.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": true
+  },
+  {
+    "id": 352,
+    "question": "Anneme şeker ölçer aldım öğrenmeye çalışıyorum.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "intended_family": "ikinci_el",
+    "is_really_yellow": false
+  },
+  {
+    "id": 353,
+    "question": "Sensör yalan söylüyor sanırım.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 354,
+    "question": "Pompa garip davranıyor hep farklı değer veriyor.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 355,
+    "question": "Cihaz bozuk olmalı inanmıyorum sonuca.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 356,
+    "question": "CGM yanlış gösteriyor gibi.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 357,
+    "question": "Ölçüm cihazı yalan söylüyor.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 358,
+    "question": "Sensör bozuk galiba.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 359,
+    "question": "İnanmıyorum sonuca tekrar ölçtüm.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 360,
+    "question": "Pompa garip değer veriyor.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 361,
+    "question": "Cihaz yanlış alarm verdi.",
+    "soft_flags": [
+      "hizli_degisim",
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 362,
+    "question": "Sensör yalan yanlış mı?",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": true
+  },
+  {
+    "id": 363,
+    "question": "CGM rengi bozuk kılıf.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "intended_family": "cihaz_guvensizlik",
+    "is_really_yellow": false
+  },
+  {
+    "id": 364,
+    "question": "Bu bana hep olur alışkınım.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 365,
+    "question": "Normal benim için bu sorun etmiyorum.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 366,
+    "question": "Bana hep oluyor bu düşmeler.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 367,
+    "question": "Alışkınım sabah yükseğe.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 368,
+    "question": "Normal bende böyle.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 369,
+    "question": "Sorun etmiyorum artık.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 370,
+    "question": "Hep olur bende.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 371,
+    "question": "Alışkınız bu dalgalanmaya.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 372,
+    "question": "Normal galiba benim için.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 373,
+    "question": "Hep olur trafik.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": false
+  },
+  {
+    "id": 374,
+    "question": "Alışkınım kahve içmeye.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": false
+  },
+  {
+    "id": 375,
+    "question": "Sorun etmiyorum spoiler.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": false
+  },
+  {
+    "id": 376,
+    "question": "Normal bende saç dökülmesi.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "intended_family": "normalize_dil",
+    "is_really_yellow": false
+  },
+  {
+    "id": 377,
+    "question": "Doktoruma pek güvenmiyorum açıkçası.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 378,
+    "question": "Hastaneye gitmek istemiyorum oradan hoşlanmıyorum.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 379,
+    "question": "Kendim halledeyim dedim gitmedim.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 380,
+    "question": "Doktora gitmek istemiyorum.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 381,
+    "question": "Hastaneye istemiyorum.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 382,
+    "question": "Doktor güvenmiyorum.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 383,
+    "question": "Kendim halledeyim şekeri.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 384,
+    "question": "Doktora gitmedim bu şikayetle.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 385,
+    "question": "Hastane gitmek istemiyorum korkuyorum.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 386,
+    "question": "Kendim halledeyim evi temizleyeyim.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "intended_family": "hekim_kacinma",
+    "is_really_yellow": false
+  },
+  {
+    "id": 387,
+    "question": "İlaca başladığımdan beri midem bulanıyor.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 388,
+    "question": "Metformin midemi bozuyor.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 389,
+    "question": "Ozempic yan etki midem bulanıyor.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 390,
+    "question": "İshal oldum ilaçtan.",
+    "soft_flags": [
+      "hasta_gunu",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 391,
+    "question": "Şişiyorum pioglitazonla.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 392,
+    "question": "Mide bozulması metformin.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 393,
+    "question": "İnsülin yerinde şişlik.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 394,
+    "question": "İlaç yan etkisi ishal.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 395,
+    "question": "Midem bulanıyor hap yüzünden.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 396,
+    "question": "Kabızlık ve şişlik var.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 397,
+    "question": "Metformin ishal yaptı.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 398,
+    "question": "Mide bozuyor yeni ilaç.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 399,
+    "question": "Şişlik bacaklarımda ilaçtan.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 400,
+    "question": "İshal metformin ile.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": true
+  },
+  {
+    "id": 401,
+    "question": "Midem bulanıyor uçakta.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": false
+  },
+  {
+    "id": 402,
+    "question": "İshal yiyecekten olmuş olabilir.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": false
+  },
+  {
+    "id": 403,
+    "question": "Şişlik ayakkabıdan.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": false
+  },
+  {
+    "id": 404,
+    "question": "Mide bozan yemek yedim.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": false
+  },
+  {
+    "id": 405,
+    "question": "İshal virüsten herkeste var.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "intended_family": "ilac_yan_etki",
+    "is_really_yellow": false
+  },
+  {
+    "id": 406,
+    "question": "Üç gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 407,
+    "question": "Dört gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 408,
+    "question": "Beş gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 409,
+    "question": "Altı gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 410,
+    "question": "Yedi gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 411,
+    "question": "Sekiz gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 412,
+    "question": "Dokuz gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 413,
+    "question": "On gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 414,
+    "question": "Şekerim 280 çok yüksek çıktı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 415,
+    "question": "Şekerim 300 çok yüksek çıktı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 416,
+    "question": "Şekerim 320 çok yüksek çıktı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 417,
+    "question": "Şekerim 340 çok yüksek çıktı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 418,
+    "question": "Şekerim 360 çok yüksek çıktı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 419,
+    "question": "Şekerim 380 çok yüksek çıktı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "intended_family": "cok_yuksek",
+    "is_really_yellow": true
+  },
+  {
+    "id": 420,
+    "question": "Şekerim 42 çok düşük.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "intended_family": "cok_dusuk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 421,
+    "question": "bir gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 422,
+    "question": "bir gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 423,
+    "question": "bir gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 424,
+    "question": "iki gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 425,
+    "question": "iki gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 426,
+    "question": "iki gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 427,
+    "question": "uc gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 428,
+    "question": "uc gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 429,
+    "question": "uc gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 430,
+    "question": "dort gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 431,
+    "question": "dort gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 432,
+    "question": "dort gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 433,
+    "question": "bes gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 434,
+    "question": "bes gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 435,
+    "question": "bes gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 436,
+    "question": "alti gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 437,
+    "question": "alti gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 438,
+    "question": "alti gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 439,
+    "question": "yedi gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 440,
+    "question": "yedi gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 441,
+    "question": "yedi gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 442,
+    "question": "sekiz gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 443,
+    "question": "sekiz gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 444,
+    "question": "sekiz gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 445,
+    "question": "dokuz gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 446,
+    "question": "dokuz gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 447,
+    "question": "dokuz gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 448,
+    "question": "on gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 449,
+    "question": "on gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 450,
+    "question": "on gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 451,
+    "question": "11 gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 452,
+    "question": "11 gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 453,
+    "question": "11 gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 454,
+    "question": "12 gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 455,
+    "question": "12 gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 456,
+    "question": "12 gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 457,
+    "question": "13 gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 458,
+    "question": "13 gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 459,
+    "question": "13 gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 460,
+    "question": "14 gündür şekerim yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 461,
+    "question": "14 gündür midem bulanıyor ve bitkinim.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 462,
+    "question": "14 gündür yara iyileşmiyor ayağımda.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "intended_family": "uc_gundur",
+    "is_really_yellow": true
+  },
+  {
+    "id": 463,
+    "question": "Şekerim düştü terliyorum.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 464,
+    "question": "Şekerim düşüyor başım dönüyor işte.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 465,
+    "question": "Hipo oldum az önce.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 466,
+    "question": "Ellerim titriyor ölçüm düşük.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 467,
+    "question": "Şeker düşük çıktı cihazdan.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 468,
+    "question": "Şekerim düşmüş gece yarısı.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 469,
+    "question": "Şekerim yükseldi susuyorum.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 470,
+    "question": "Şeker yükseliyor ağız kurudu.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 471,
+    "question": "Sık idrar var şeker mi yüksek?",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "intended_family": "hiper_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 472,
+    "question": "Şekerim hızla yükseliyor alarm verdi.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 473,
+    "question": "Şekerim hızla düşüyor korktum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 474,
+    "question": "Birden düştü şekerim CGM.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 475,
+    "question": "Ani yükseldi tokluk.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 476,
+    "question": "Grafik hızla yükseliyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 477,
+    "question": "Uyarı geldi sensörden.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "intended_family": "hizli_degisim",
+    "is_really_yellow": true
+  },
+  {
+    "id": 478,
+    "question": "Yol kenarına çektim arabayı fenalaştım.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 479,
+    "question": "Bacaklarım tutmadı merdivende.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 480,
+    "question": "Odaklanamadım toplantıda.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "intended_family": "fonksiyonel_bozulma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 481,
+    "question": "Her spordan sonra aynı şey.",
+    "soft_flags": [
+      "oruntu_tekrar",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 482,
+    "question": "Yine oldu sabah düşmesi.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "intended_family": "oruntu_tekrar",
+    "is_really_yellow": true
+  },
+  {
+    "id": 483,
+    "question": "Tekrar aynı hipo.",
+    "soft_flags": [
+      "hipo_dil",
+      "oruntu_tekrar"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 484,
+    "question": "İğneyi unuttum dün akşam.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 485,
+    "question": "Yanlış kalemle yaptım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "intended_family": "uygulama_hatasi",
+    "is_really_yellow": true
+  },
+  {
+    "id": 486,
+    "question": "Ölçmekten bıktım.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 487,
+    "question": "Kontrolü bıraktım.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 488,
+    "question": "Umursamıyorum artık.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "intended_family": "bakim_birakma",
+    "is_really_yellow": true
+  },
+  {
+    "id": 489,
+    "question": "Yastığım terden ıslak.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 490,
+    "question": "Uyanınca başım ağrıyor şaşkınım.",
+    "soft_flags": [
+      "gece_hipo"
+    ],
+    "intended_family": "gece_hipo",
+    "is_really_yellow": true
+  },
+  {
+    "id": 491,
+    "question": "İğne yeri kızardı sertleşti.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "intended_family": "ayak_yara",
+    "is_really_yellow": true
+  },
+  {
+    "id": 492,
+    "question": "Grip oldum şeker karıştı ne yapayım?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 493,
+    "question": "Ateşim var ölçüm tutmuyor.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 494,
+    "question": "Hastayken ilaç alayım mı?",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "intended_family": "hasta_gunu",
+    "is_really_yellow": true
+  },
+  {
+    "id": 495,
+    "question": "Gecikmiş hipo spor sonrası.",
+    "soft_flags": [
+      "hipo_dil",
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 496,
+    "question": "Antrenman sonrası gece tuhaf.",
+    "soft_flags": [
+      "egzersiz_gecikmeli"
+    ],
+    "intended_family": "egzersiz_gecikmeli",
+    "is_really_yellow": true
+  },
+  {
+    "id": 497,
+    "question": "İçtim dün şeker düştü.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 498,
+    "question": "Alkol sonrası hipo.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "intended_family": "hipo_dil",
+    "is_really_yellow": true
+  },
+  {
+    "id": 499,
+    "question": "İçki sonrası tuhaf şeker.",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "intended_family": "alkol_risk",
+    "is_really_yellow": true
+  },
+  {
+    "id": 500,
+    "question": "Hamileyim ilaç unuttum kötüüm.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "intended_family": "gebelik_oruc",
+    "is_really_yellow": true
+  }
+]

@@ -1,0 +1,1573 @@
+[
+  {
+    "id": 1,
+    "question": "Şekerim 320 çıktı, çok yüksek, ne yapmalıyım?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 2,
+    "question": "Kan şekerim çok yüksek ölçülüyor son ölçümlerde.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 3,
+    "question": "Açlık şekerim 280, çok yüksek diyor cihaz.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 4,
+    "question": "Tokluk şekerim çok yüksek çıktı midem de bulanıyor.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 5,
+    "question": "Gece ölçtüm 350 çok yüksek, korktum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 6,
+    "question": "Şekerim çok yüksek sanırım, sürekli susuyorum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 7,
+    "question": "Ölçüm sonucu çok yüksek geldi, doktora gitmeli miyim?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 8,
+    "question": "Sabah şekerim çok yüksek çıkıyor, neden olur?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 9,
+    "question": "Diyabette motivasyonum çok yüksek, böyle devam.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 10,
+    "question": "Çok yüksek kaliteli bir sensör önerir misin?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 11,
+    "question": "Risk çok yüksek mi diye korkuyorum ama şekerim normal.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 12,
+    "question": "Fiyatı çok yüksek ilaçlar kullanmak zorunda mıyım?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 13,
+    "question": "HbA1c hedefim çok yüksek tutulmuş olabilir mi?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 14,
+    "question": "Şekerim 48, çok düşük hissediyorum.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 15,
+    "question": "Kan şekerim çok düşük çıktı, ellerim titriyor.",
+    "soft_flags": [
+      "cok_dusuk",
+      "hipo_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 16,
+    "question": "Gece şekerim çok düşük çıktı, terleyerek uyandım.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 17,
+    "question": "Ölçüm 55, çok düşük diyor cihaz, ne yemeliyim?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 18,
+    "question": "Spor sonrası şekerim çok düşük oldu.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 19,
+    "question": "Şekerim çok düşük sanırım, başım dönüyor.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 20,
+    "question": "İnsülin sonrası çok düşük çıkıyor ölçümlerim.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 21,
+    "question": "Tokluk şekerim beklediğimden çok düşük geldi, iyi mi?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 22,
+    "question": "Karbonhidrat oranı çok düşük diyet uygun mu?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 23,
+    "question": "Mağazada fiyatlar çok düşük diye şekerli ürün aldım, yanlış mı?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 24,
+    "question": "Maliyet çok düşük olsun diye jenerik alabilir miyim?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 25,
+    "question": "Risk çok düşük diye ihmal etmeyeyim mi kontrolleri?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 26,
+    "question": "Motivasyonum çok düşük, diyabete devam edemiyorum.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 27,
+    "question": "Şekerim hızla yükseliyor, 180'den 280'e çıktı.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 28,
+    "question": "Kan şekerim hızla düşüyor, ne yapmalıyım?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 29,
+    "question": "Yemekten sonra şekerim hızla yükseliyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 30,
+    "question": "İnsülin sonrası şekerim hızla düşüyor, korkuyorum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 31,
+    "question": "CGM'de grafik hızla yükseliyor, müdahale edeyim mi?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 32,
+    "question": "Hastayken şekerim hızla yükseliyor gibi.",
+    "soft_flags": [
+      "hizli_degisim",
+      "hasta_gunu"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 33,
+    "question": "Egzersiz sırasında şekerim hızla düşüyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 34,
+    "question": "Sabaha karşı şekerim hızla yükseliyor, dawn mı?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 35,
+    "question": "Sensör okuması hızla düşüyor ama kendimi iyi hissediyorum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 36,
+    "question": "Şeker eğrisi hızla yükseliyor diye alarm veriyor telefon.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 37,
+    "question": "Üç gündür şekerim yüksek inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 38,
+    "question": "Üç gündür midem bulanıyor, ilaç mı bozuyor?",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 39,
+    "question": "Üç gündür ayağımda yara iyileşmiyor.",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 40,
+    "question": "Üç gündür şekerim 250 civarında geziyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 41,
+    "question": "Üç gündür ishalim var, metformin mi keseyim?",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 42,
+    "question": "Üç gündür çok susuyor ve sık idrara çıkıyorum.",
+    "soft_flags": [
+      "uc_gundur",
+      "hiper_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 43,
+    "question": "Üç gündür gece terlemeleriyle uyanıyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 44,
+    "question": "Üç gündür tansiyonum da yüksek çıkıyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 45,
+    "question": "Üç gündür kitap okuyorum diyabet hakkında.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 46,
+    "question": "Üç gündür tatildeyim, şekerim normal.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 47,
+    "question": "Üç gündür yeni diyete başladım, nasıl takip ederim?",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 48,
+    "question": "Üç gündür spor yapıyorum, devam edeyim mi?",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 49,
+    "question": "Üç gündür sensörüm çalışıyor, değerler stabil.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 50,
+    "question": "Şekerim 400 çok yüksek ve üç gündür böyle.",
+    "soft_flags": [
+      "cok_yuksek",
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 51,
+    "question": "Şekerim çok düşük, hızla düşüyor gibi hissediyorum.",
+    "soft_flags": [
+      "cok_dusuk",
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 52,
+    "question": "Üç gündür şekerim çok yüksek, midem de bulanıyor.",
+    "soft_flags": [
+      "cok_yuksek",
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 53,
+    "question": "Kan şekerim hızla yükseliyor, çok yüksek alarmı da verdi.",
+    "soft_flags": [
+      "cok_yuksek",
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 54,
+    "question": "Üç gündür şekerim çok düşük sabahları.",
+    "soft_flags": [
+      "cok_dusuk",
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 55,
+    "question": "Şekerim 290 çıktı çok yüksek, ne içeyim?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 56,
+    "question": "Ölçüm çok düşük 42, hemen bir şey yemeli miyim?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 57,
+    "question": "Grafikte şeker hızla yükseliyor, yemek mi yedim unuttum.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 58,
+    "question": "Üç gündür başım ağrıyor, şekerle ilgili olabilir mi?",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 59,
+    "question": "Çok yüksek çıkan değerler için doktora ne zaman gideyim?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 60,
+    "question": "Çok düşük karbonhidratlı menü örnekleri verir misin?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 61,
+    "question": "Şekerim 310, çok yüksek ve kusuyorum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 62,
+    "question": "Şekerim 40 çok düşük, konuşmam zorlaşıyor.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 63,
+    "question": "Üç gündür iyileşmeyen ayak yarası var, acil mi?",
+    "soft_flags": [
+      "uc_gundur",
+      "ayak_yara"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 64,
+    "question": "Şekerim hızla düşüyor 70'ten 50'ye indi.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 65,
+    "question": "Çok yüksek tansiyonum var, şekerle ilişkili mi?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 66,
+    "question": "Protein oranı çok düşük menü mü öneriyorsun?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 67,
+    "question": "Üç gündür oruç tuttum, şekerim dalgalı.",
+    "soft_flags": [
+      "uc_gundur",
+      "gebelik_oruc"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 68,
+    "question": "Tokluk şekerim çok yüksek 240 civarı.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 69,
+    "question": "Açlık şekerim çok düşük 60'ın altına iniyor.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 70,
+    "question": "CGM okuması hızla yükseliyor, kalibrasyon mu bozuk?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 71,
+    "question": "Üç gündür grip gibiyim, şeker hapına devam mı?",
+    "soft_flags": [
+      "uc_gundur",
+      "hasta_gunu"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 72,
+    "question": "Şeker kontrolüm çok yüksek seviyede gidiyor son hafta.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 73,
+    "question": "Egzersiz motivasyonum çok yüksek, abartır mıyım?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 74,
+    "question": "Kolesterolüm çok düşük çıktı, diyabet ilacı mı etkiledi?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 75,
+    "question": "Üç gündür sadece sebze yedim, şekerim düzeldi mi?",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 76,
+    "question": "Şekerim hızla yükseliyor ama henüz 160, bekleyeyim mi?",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 77,
+    "question": "Çok yüksek çıkan HbA1c için ne değiştirmeliyim?",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 78,
+    "question": "Kan şekerim çok düşük alarmı verdi, 15-15 uygulayayım mı?",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 79,
+    "question": "Üç gündür keton bakıyorum, strip negatif.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 80,
+    "question": "Şekerim çok yüksek 380, üç gündür kusma da var.",
+    "soft_flags": [
+      "cok_yuksek",
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 81,
+    "question": "Prediyabet nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 82,
+    "question": "Tip 2 diyabet nedir kısaca?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 83,
+    "question": "HbA1c neyi gösterir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 84,
+    "question": "Açlık şekeri nasıl ölçülür?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 85,
+    "question": "Tokluk şekeri ne zaman bakılır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 86,
+    "question": "Diyabette karbonhidrat sayımı nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 87,
+    "question": "Glisemik indeks ne demek?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 88,
+    "question": "Metformin ne işe yarar, genel bilgi?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 89,
+    "question": "İnsülin vücutta nasıl çalışır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 90,
+    "question": "Diyabetik retinopati nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 91,
+    "question": "Ayak bakımı için genel öneriler neler?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 92,
+    "question": "Su içmek şekeri nasıl etkiler?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 93,
+    "question": "Yürüyüş diyabete faydalı mı?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 94,
+    "question": "HbA1c hedef aralığı genel olarak nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 95,
+    "question": "CGM ne demek?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 96,
+    "question": "Parmak ucu ölçüm nasıl yapılır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 97,
+    "question": "Diyabette tuz tüketimi önemli mi?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 98,
+    "question": "Alkolün şeker üzerindeki genel etkisi nedir?",
+    "soft_flags": [
+      "alkol_risk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 99,
+    "question": "Hasta günü planı nedir, eğitim olarak?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 100,
+    "question": "Diyabet kimlik kartı neden taşınır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 101,
+    "question": "Şeker ölçüm birimi mg/dL mi mmol/L mi?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 102,
+    "question": "Dawn fenomeni nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 103,
+    "question": "Somogyi etkisi nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 104,
+    "question": "Ketone nedir diyabette?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 105,
+    "question": "Hipoglisemi eğitimi nedir, belirtiler listesi?",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 106,
+    "question": "Hiperglisemi eğitimi nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 107,
+    "question": "Diyabette uyku düzeni neden önemli?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 108,
+    "question": "Stres şekeri nasıl etkiler genel bilgi?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 109,
+    "question": "Diyabetik nöropati nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 110,
+    "question": "Böbrek fonksiyon testleri neden istenir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 111,
+    "question": "Lipid paneli diyabette neden bakılır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 112,
+    "question": "Göz muayenesi ne sıklıkla önerilir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 113,
+    "question": "Aşılama diyabette neden önemli?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 114,
+    "question": "Tatlandırıcılar hakkında genel bilgi verir misin?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 115,
+    "question": "Lifli gıdalar diyabete nasıl yardım eder?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 116,
+    "question": "Protein ihtiyacı diyabette nasıl planlanır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 117,
+    "question": "Ara öğün ne zaman gerekir, eğitim?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 118,
+    "question": "Egzersiz öncesi genel hazırlık nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 119,
+    "question": "Seyahatte ölçüm cihazı nasıl taşınır?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 120,
+    "question": "Diyabet günlüğü tutmak faydalı mı?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 121,
+    "question": "Doktor kontrolüne ne götürmeliyim?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 122,
+    "question": "İlaç kutusu prospektüsünü nasıl okurum?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 123,
+    "question": "Jenerik ilaç ne demek?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 124,
+    "question": "Eczanede reçete yenileme süreci nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 125,
+    "question": "Diyabet derneklerinden güvenilir kaynak önerir misin?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 126,
+    "question": "Tip 1 ile tip 2 farkı nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 127,
+    "question": "Gestasyonel diyabet nedir, eğitim?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 128,
+    "question": "İnsülin direnci ne demek?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 129,
+    "question": "Pankreas ne işe yarar?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 130,
+    "question": "Glukagon nedir kısaca?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 131,
+    "question": "Oral glukoz tolerans testi nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 132,
+    "question": "Mikroalbuminüri ne demek?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 133,
+    "question": "Ayakta nasır için genel önlem nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 134,
+    "question": "Şekersiz yazan ürün her zaman uygun mu?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 135,
+    "question": "Diyabette sigara neden zararlı?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 136,
+    "question": "Şekerim 62 çıktı, ne yapayım?",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 137,
+    "question": "Sabah açlık şekerim 68, başım hafif dönüyor.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 138,
+    "question": "Ölçüm 58 mg/dL, kendimi kötü hissediyorum.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 139,
+    "question": "Şekerim 250, midem bulanıyor.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 140,
+    "question": "Kan şekerim 280 civarı üç ölçümde.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 141,
+    "question": "Tokluk 220 çıktı iki saatte.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 142,
+    "question": "Gece 3'te şekerim 55 çıktı.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 143,
+    "question": "Şekerim 70'in altında, terliyorum.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 144,
+    "question": "Açlık 190 üstü gidiyor son günler.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 145,
+    "question": "Ölçüm 310, çok susadım.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 146,
+    "question": "Şekerim 65, arabadayım.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 147,
+    "question": "Çocukta değil bende şeker 52 çıktı.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 148,
+    "question": "HbA1c 10.2 çıktı, endişeliyim.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 149,
+    "question": "Şekerim 45 değil ama 60 civarı kötü hissediyorum.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 150,
+    "question": "Sabah 75, öğlen 240 çıktı.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 151,
+    "question": "İnsülin sonrası 58 gördüm.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 152,
+    "question": "Spor sonrası 62 ölçtüm.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 153,
+    "question": "Hastayken şekerim 300'e yaklaştı.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 154,
+    "question": "Kusma yok ama şeker 270 ve halsizim.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 155,
+    "question": "Şekerim 160 sabah akşam yüksek kalıyor.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 156,
+    "question": "Şekerim düştü ellerim titriyor.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 157,
+    "question": "Hipo oldum galiba işte.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 158,
+    "question": "Ellerim titriyor açlık hissi var.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 159,
+    "question": "Şekerim yükseldi sürekli susuyorum.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 160,
+    "question": "Ağzım kuruyor sık idrara çıkıyorum.",
+    "soft_flags": [
+      "hiper_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 161,
+    "question": "Arabayı kenara çekmek zorunda kaldım halsizlikten.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 162,
+    "question": "Toplantıdayken odaklanamadım şeker yüzünden.",
+    "soft_flags": [
+      "fonksiyonel_bozulma"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 163,
+    "question": "Dün iğneyi unuttum sonra iki kat yaptım.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 164,
+    "question": "Yanlış kalemle insülin yaptım fark etmeden.",
+    "soft_flags": [
+      "uygulama_hatasi"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 165,
+    "question": "Artık ölçmekten bıktım umursamıyorum.",
+    "soft_flags": [
+      "bakim_birakma"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 166,
+    "question": "Artık ölçmüyorum ilacımı da bıraktım.",
+    "soft_flags": [],
+    "is_really_yellow": true
+  },
+  {
+    "id": 167,
+    "question": "Gece terleyerek uyandım şeker düşük gibi.",
+    "soft_flags": [
+      "hipo_dil",
+      "gece_hipo"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 168,
+    "question": "Ayağımda yara bir türlü iyileşmiyor.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 169,
+    "question": "Ayak parmağımda yara var diyabetliyim.",
+    "soft_flags": [
+      "ayak_yara"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 170,
+    "question": "Grip oldum şekerim bozuldu.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 171,
+    "question": "Ateşim var ölçümlerim yüksek.",
+    "soft_flags": [
+      "hasta_gunu"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 172,
+    "question": "Spor sonrası geç hipo yaptım.",
+    "soft_flags": [
+      "hipo_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 173,
+    "question": "Akşam alkol sonrası şekerim düştü.",
+    "soft_flags": [
+      "hipo_dil",
+      "alkol_risk"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 174,
+    "question": "Hamileyim oruç tutunca şekerim bozuluyor.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 175,
+    "question": "Eşim şekerime bakıp dozumu ayarladı.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 176,
+    "question": "Sensör yalan söylüyor sanırım.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 177,
+    "question": "Sensör yalan söylüyor parmak ucuyla uymuyor.",
+    "soft_flags": [
+      "cihaz_guvensizlik"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 178,
+    "question": "Şekerim yüksek ama sorun etmiyorum idare ederim.",
+    "soft_flags": [
+      "normalize_dil"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 179,
+    "question": "Doktora gitmek istemiyorum kendi ayarlarım.",
+    "soft_flags": [
+      "hekim_kacinma"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 180,
+    "question": "Metformin midemi bozdu keseyim mi?",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 181,
+    "question": "Ozempic sonrası midem bulanıyor.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 182,
+    "question": "Her yemekten sonra aynı yükseliş oluyor.",
+    "soft_flags": [
+      "oruntu_tekrar"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 183,
+    "question": "Üç gündür şekerim inmiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 184,
+    "question": "Beş gündür midem bulanıyor.",
+    "soft_flags": [
+      "uc_gundur",
+      "ilac_yan_etki"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 185,
+    "question": "Haftadır ayağımda yara var.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 186,
+    "question": "Hâlâ geçmiyor bu halsizlik.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 187,
+    "question": "Şekerim düzelmiyor bir türlü.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 188,
+    "question": "Alarm verdi gece CGM.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 189,
+    "question": "Grafik hızla düşüyor.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 190,
+    "question": "Kan şekerim ani yükseldi.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 191,
+    "question": "İki gündür hasta günü planı uyguluyorum yine yüksek.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 192,
+    "question": "Oruç tutuyorum diyabetliyim şekerim oynuyor.",
+    "soft_flags": [
+      "gebelik_oruc"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 193,
+    "question": "Annem şekerime bakıp doz önerdi denedim.",
+    "soft_flags": [
+      "ikinci_el"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 194,
+    "question": "İnsülini yanlış yere yaptım şişlik oldu.",
+    "soft_flags": [
+      "ilac_yan_etki"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 195,
+    "question": "Ölçümü bıraktım bir aydır.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": true
+  },
+  {
+    "id": 196,
+    "question": "Fiyatlar düştü markette şekersiz ürün var.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 197,
+    "question": "Motivasyonum düştü diyete ama şekerim normal.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 198,
+    "question": "Alarm verdi kapı zili sandım.",
+    "soft_flags": [
+      "hizli_degisim"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 199,
+    "question": "Tatil üç gündür çok güzel geçiyor.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 200,
+    "question": "Kitabı üç gündür bitiremiyorum.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 201,
+    "question": "Forumda üç gündür tartışıyorlar diyabeti.",
+    "soft_flags": [
+      "uc_gundur"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 202,
+    "question": "Çok yüksek kaliteli eğitim istiyorum.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 203,
+    "question": "Mağazada çok yüksek indirim varmış.",
+    "soft_flags": [
+      "cok_yuksek"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 204,
+    "question": "Risk çok düşük diye quiz sonucu geldi.",
+    "soft_flags": [
+      "cok_dusuk"
+    ],
+    "is_really_yellow": false
+  },
+  {
+    "id": 205,
+    "question": "Kolesterolüm laboratuvarda yazılmış ama sadece bilgi soruyorum: LDL nedir?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 206,
+    "question": "Doktor gibi konuşuyorsun teşekkürler.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 207,
+    "question": "Prediyabet için güvenilir hasta eğitim kaynağı önerir misin?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 208,
+    "question": "Şeker kelimesi geçen tatlı tarifi istiyorum.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 209,
+    "question": "Yüksek tansiyon nedir genel bilgi, şekerim normal.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 210,
+    "question": "Düşük karbonhidrat diyeti hakkında makale özeti.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 211,
+    "question": "Gece uykum bölündü ama şeker ölçmedim, genel uyku ipucu.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 212,
+    "question": "Ayağım kaşınıyor kuruluk var, yara yok eğitim bakımı.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 213,
+    "question": "Alkolün kalori değeri nedir, ölçümüm stabil.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 214,
+    "question": "Egzersiz videosu önerir misin, şekerim kontrolde.",
+    "soft_flags": [],
+    "is_really_yellow": false
+  },
+  {
+    "id": 215,
+    "question": "İlaç kutusu rengi solmuş, içerik aynı mı genel?",
+    "soft_flags": [],
+    "is_really_yellow": false
+  }
+]

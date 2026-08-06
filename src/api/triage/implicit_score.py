@@ -1,7 +1,9 @@
-"""Adım 3 — FT encoder (bge-m3) örtük acil-dil skoru.
+"""Adım 3 — Örtük uyarı skoru (bge-m3, anchor benzerliği).
 
 Hard-veto'nun zaten yakaladığı ifadeler (112, bayılma, bilinç…) anchor DEĞİL.
 Odak: regex kaçıran örtük / zayıf semptom dili.
+
+triage için hazır örnek cümlelere cosine benzerlik skoru üretir.
 """
 
 from __future__ import annotations
@@ -36,9 +38,14 @@ _model: Any = None
 _anchor_matrix: np.ndarray | None = None
 
 
-def _skip_ft() -> bool:
-    """Smoke/test: TRIAGE_SKIP_FT=1 → skor 0 (model yükleme yok)."""
-    return (os.getenv("TRIAGE_SKIP_FT") or "").strip() in {"1", "true", "True", "yes"}
+def _skip_implicit() -> bool:
+    """Smoke/test: TRIAGE_SKIP_IMPLICIT=1 → skor 0 (model yükleme yok)."""
+    return (os.getenv("TRIAGE_SKIP_IMPLICIT") or "").strip() in {
+        "1",
+        "true",
+        "True",
+        "yes",
+    }
 
 
 def _ensure_loaded(device: str | None = None) -> tuple[Any, np.ndarray]:
@@ -63,10 +70,10 @@ def _ensure_loaded(device: str | None = None) -> tuple[Any, np.ndarray]:
         return _model, _anchor_matrix
 
 
-def score_ft(message: str, *, device: str | None = None) -> float:
+def score_implicit(message: str, *, device: str | None = None) -> float:
     """Mesajın örtük acil-dil skoru [0, 1] (max cosine vs anchors)."""
     text = (message or "").strip()
-    if not text or _skip_ft():
+    if not text or _skip_implicit():
         return 0.0
     model, anchors = _ensure_loaded(device=device)
     from src.retrieval.embed import encode_texts
@@ -79,7 +86,7 @@ def score_ft(message: str, *, device: str | None = None) -> float:
     return float(np.clip(float(sims.max()), 0.0, 1.0))
 
 
-def reset_ft_cache() -> None:
+def reset_implicit_cache() -> None:
     """Testler için model cache temizliği."""
     global _model, _anchor_matrix
     with _lock:

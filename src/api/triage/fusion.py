@@ -18,9 +18,10 @@ class FusionConfig:
 
     w_numeric_yellow: float = 0.40
     w_regex_soft: float = 0.30
-    w_ft_encoder: float = 0.30
-    band_low: float = 0.30
-    band_high: float = 0.60
+    w_implicit: float = 0.30
+    # Klinik öncelik (triage_test_set, SKIP_IMPLICIT): kaçırmamak > eğitim FP
+    band_low: float = 0.20
+    band_high: float = 0.55
     soft_weights: dict[str, float] = field(
         default_factory=lambda: dict(SOFT_YELLOW_WEIGHTS)
     )
@@ -37,7 +38,7 @@ class FusionResult:
     numeric_yellow: bool
     soft_flags: list[str]
     soft_signal: float
-    ft_score: float
+    implicit_score: float
     band: str  # "below" | "grey" | "above"
     guarded_level: str | None = None  # EMERGENCY/REFUSE if guard fired
     reason: str = ""
@@ -54,21 +55,21 @@ def fusion_score(
     *,
     numeric_yellow: bool,
     soft_flags: list[str],
-    ft_score: float,
+    implicit_score: float,
     config: FusionConfig | None = None,
 ) -> float:
     """Ağırlıklı skor [0, 1]. Soft flags numeric'ten bağımsız katkı verir."""
     cfg = config or DEFAULT_FUSION
     s_num = 1.0 if numeric_yellow else 0.0
     s_soft = soft_signal(soft_flags, cfg.soft_weights)
-    s_ft = float(min(1.0, max(0.0, ft_score)))
-    w_sum = cfg.w_numeric_yellow + cfg.w_regex_soft + cfg.w_ft_encoder
+    s_imp = float(min(1.0, max(0.0, implicit_score)))
+    w_sum = cfg.w_numeric_yellow + cfg.w_regex_soft + cfg.w_implicit
     if w_sum <= 0:
         return 0.0
     raw = (
         cfg.w_numeric_yellow * s_num
         + cfg.w_regex_soft * s_soft
-        + cfg.w_ft_encoder * s_ft
+        + cfg.w_implicit * s_imp
     )
     return float(raw / w_sum)
 
@@ -101,7 +102,7 @@ def evaluate_fusion(
     *,
     numeric_yellow: bool,
     soft_flags: list[str],
-    ft_score: float,
+    implicit_score: float,
     config: FusionConfig | None = None,
 ) -> FusionResult:
     """Fusion skor + band + guard."""
@@ -111,7 +112,7 @@ def evaluate_fusion(
     score = fusion_score(
         numeric_yellow=numeric_yellow,
         soft_flags=soft_flags,
-        ft_score=ft_score,
+        implicit_score=implicit_score,
         config=cfg,
     )
     region = band_region(score, cfg)
@@ -120,7 +121,7 @@ def evaluate_fusion(
         f"band={region}",
         f"num_y={int(numeric_yellow)}",
         f"soft={s_soft:.2f}{soft_flags}",
-        f"ft={ft_score:.3f}",
+        f"implicit={implicit_score:.3f}",
     ]
     if guarded:
         reason_parts.append(f"guard={guarded}")
@@ -129,7 +130,7 @@ def evaluate_fusion(
         numeric_yellow=numeric_yellow,
         soft_flags=list(soft_flags),
         soft_signal=s_soft,
-        ft_score=ft_score,
+        implicit_score=implicit_score,
         band=region,
         guarded_level=guarded,
         reason="; ".join(reason_parts),

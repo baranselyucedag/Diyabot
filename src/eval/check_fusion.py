@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-os.environ.setdefault("TRIAGE_SKIP_FT", "1")
+os.environ.setdefault("TRIAGE_SKIP_IMPLICIT", "1")
 os.environ.setdefault("TRIAGE_SKIP_LLM", "1")
 
 from src.api.triage.fusion import (
@@ -30,23 +30,23 @@ def main() -> None:
     """Fusion senaryolari."""
     failed = 0
 
-    # Soft katkı numeric'ten bagimsiz
+    # Soft katkı numeric'ten bagimsiz (kilit: cok_yuksek=0.50)
     s_only = soft_signal(["cok_yuksek"])
-    assert abs(s_only - 0.70) < 1e-6, s_only
+    assert abs(s_only - 0.50) < 1e-6, s_only
     score_soft = fusion_score(
-        numeric_yellow=False, soft_flags=["cok_yuksek"], ft_score=0.0
+        numeric_yellow=False, soft_flags=["cok_yuksek"], implicit_score=0.0
     )
-    # 0.30 * 0.70 / 1.0 = 0.21 → below
+    # 0.30 * 0.50 / 1.0 = 0.15 → below
     ok = score_soft < DEFAULT_FUSION.band_low
     print(f"[{'OK' if ok else 'FAIL'}] soft-only skor={score_soft:.3f} below band")
     if not ok:
         failed += 1
 
-    # Numeric YELLOW + soft birlikte (regex atlanmaz)
+    # Numeric YELLOW + guclu soft (hizli_degisim=0.85) → above
     score_both = fusion_score(
-        numeric_yellow=True, soft_flags=["cok_yuksek"], ft_score=0.0
+        numeric_yellow=True, soft_flags=["hizli_degisim"], implicit_score=0.0
     )
-    # (0.4*1 + 0.3*0.7) / 1 = 0.61 → above
+    # (0.4*1 + 0.3*0.85) / 1 = 0.655 → above
     ok = score_both > DEFAULT_FUSION.band_high
     print(f"[{'OK' if ok else 'FAIL'}] num+soft skor={score_both:.3f} above band")
     if not ok:
@@ -54,7 +54,7 @@ def main() -> None:
 
     # Numeric alone → grey
     score_num = fusion_score(
-        numeric_yellow=True, soft_flags=[], ft_score=0.0
+        numeric_yellow=True, soft_flags=[], implicit_score=0.0
     )
     ok = DEFAULT_FUSION.band_low <= score_num <= DEFAULT_FUSION.band_high
     print(f"[{'OK' if ok else 'FAIL'}] num-only skor={score_num:.3f} grey band")
@@ -66,7 +66,7 @@ def main() -> None:
         "şekerim 60 ve çok yüksek",
         numeric_yellow=True,
         soft_flags=["cok_yuksek"],
-        ft_score=0.0,
+        implicit_score=0.0,
     )
     ok = fus.soft_signal > 0 and fus.numeric_yellow
     print(f"[{'OK' if ok else 'FAIL'}] soft+num together soft_signal={fus.soft_signal}")
@@ -78,7 +78,7 @@ def main() -> None:
         "bilincim bulanık",
         numeric_yellow=False,
         soft_flags=[],
-        ft_score=0.0,
+        implicit_score=0.0,
     )
     ok = fus_g.guarded_level == "EMERGENCY"
     print(f"[{'OK' if ok else 'FAIL'}] monotonicity guard → {fus_g.guarded_level}")

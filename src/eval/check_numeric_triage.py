@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-os.environ.setdefault("TRIAGE_SKIP_FT", "1")
+os.environ.setdefault("TRIAGE_SKIP_IMPLICIT", "1")
 os.environ.setdefault("TRIAGE_SKIP_LLM", "1")
 
 from src.api.triage import detect_triage

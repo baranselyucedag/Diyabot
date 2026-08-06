@@ -1,13 +1,15 @@
 #!/usr/bin/env python
-"""Grey-band eşik grid search (manuel seed → fine-tune).
+"""Grey-band esik grid search.
 
-Hedefler yön gösterici (küçük eval'de yüksek varyans):
-  YELLOW recall >= 0.85, GREEN precision >= 0.90 — hard gate değil.
+Varsayilan set: data/gold/triage_test_set.json
+  is_really_yellow true  → beklenen YELLOW
+  is_really_yellow false → beklenen GREEN
 
-Calistir:
-  set TRIAGE_SKIP_FT=1
+Calistir (proje kokunden):
+  set TRIAGE_SKIP_IMPLICIT=1
   set TRIAGE_SKIP_LLM=1
   python -m src.eval.tune_band
+  python -m src.eval.tune_band data/gold/triage_test_set.json
 """
 
 from __future__ import annotations
@@ -15,19 +17,22 @@ from __future__ import annotations
 import json
 import os
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-os.environ.setdefault("TRIAGE_SKIP_FT", "1")
+os.environ.setdefault("TRIAGE_SKIP_IMPLICIT", "1")
 os.environ.setdefault("TRIAGE_SKIP_LLM", "1")
 
-from src.api.triage.ft_encoder import score_ft
+from src.api.triage.implicit_score import score_implicit
 from src.api.triage.fusion import FusionConfig, evaluate_fusion
 from src.api.triage.numeric import evaluate_numeric_triage
 from src.api.triage.regex_flags import SOFT_YELLOW_WEIGHTS, evaluate_regex_flags
+
+DEFAULT_SET = ROOT / "data" / "gold" / "triage_test_set.json"
 
 
 def _soft_flags(msg: str) -> list[str]:
@@ -45,10 +50,8 @@ def _is_hard(msg: str) -> bool:
     return bool(regex and regex.level in {"EMERGENCY", "REFUSE"})
 
 
-def _fusion_level(
-    msg: str, cfg: FusionConfig
-) -> str:
-    """Hard veto yoksa fusion band → YELLOW/GREEN (grey→YELLOW tempered varsayım)."""
+def _fusion_level(msg: str, cfg: FusionConfig) -> str:
+    """Hard veto yoksa fusion band → YELLOW/GREEN (grey→YELLOW)."""
     if _is_hard(msg):
         num = evaluate_numeric_triage(msg)
         if num and num.level == "EMERGENCY":
@@ -59,9 +62,13 @@ def _fusion_level(
     num = evaluate_numeric_triage(msg)
     num_y = bool(num and num.level == "YELLOW")
     soft = _soft_flags(msg)
-    ft = score_ft(msg)
+    imp = score_implicit(msg)
     fus = evaluate_fusion(
-        msg, numeric_yellow=num_y, soft_flags=soft, ft_score=ft, config=cfg
+        msg,
+        numeric_yellow=num_y,
+        soft_flags=soft,
+        implicit_score=imp,
+        config=cfg,
     )
     if fus.guarded_level:
         return fus.guarded_level
@@ -69,44 +76,60 @@ def _fusion_level(
         return "YELLOW"
     if fus.band == "below":
         return "GREEN"
-    return "YELLOW"  # grey → tempered default
+    return "YELLOW"
+
+
+def _expected_level(r: dict) -> str | None:
+    """triage_test_set (is_really_yellow) veya gold (expected_triage)."""
+    if "is_really_yellow" in r and r["is_really_yellow"] is not None:
+        return "YELLOW" if r["is_really_yellow"] is True else "GREEN"
+    exp = str(r.get("expected_triage") or "")
+    if exp in {"GREEN", "YELLOW"}:
+        return exp
+    return None
+
+
+def _load_rows(path: Path) -> list[dict]:
+    text = path.read_text(encoding="utf-8")
+    if path.suffix.lower() == ".jsonl":
+        return [json.loads(line) for line in text.splitlines() if line.strip()]
+    data = json.loads(text)
+    if not isinstance(data, list):
+        raise SystemExit("Beklenen JSON dizi veya JSONL.")
+    return data
 
 
 def main() -> None:
-    """Gold üzerinde basit band grid."""
-    gold_path = ROOT / "data" / "gold" / "gold_set.jsonl"
-    if not gold_path.exists():
-        print(f"Gold yok: {gold_path}")
+    set_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_SET
+    if not set_path.is_absolute():
+        set_path = ROOT / set_path
+    if not set_path.exists():
+        print(f"Dosya yok: {set_path}")
         raise SystemExit(1)
 
-    rows = []
-    for line in gold_path.read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            rows.append(json.loads(line))
+    rows = _load_rows(set_path)
+    print(f"=== Band tune seti: {set_path} (n={len(rows)}) ===\n")
 
-    # Soft precision notu: EMERGENCY haric; soft trigger vs YELLOW/GREEN
-    print("=== Soft pattern kabataslak precision (EMERGENCY haric) ===\n")
-    from collections import defaultdict
-
+    print("=== Soft precision (is_really_yellow / expected) ===\n")
     tp: dict[str, int] = defaultdict(int)
     fp: dict[str, int] = defaultdict(int)
     for r in rows:
-        label = str(r.get("expected_triage") or "")
-        if label in {"EMERGENCY", "RED_REFUSE"}:
+        exp = _expected_level(r)
+        if exp is None:
             continue
-        q = r.get("question") or ""
-        soft = _soft_flags(q)
+        soft = _soft_flags(r.get("question") or "")
         for f in soft:
-            if label == "YELLOW":
+            if exp == "YELLOW":
                 tp[f] += 1
-            elif label == "GREEN":
+            else:
                 fp[f] += 1
-    for f in sorted(set(tp) | set(fp)):
+    for f in sorted(set(tp) | set(fp), key=lambda x: (-(tp[x] / (tp[x] + fp[x]) if tp[x] + fp[x] else 0), x)):
         t, f_ = tp[f], fp[f]
-        prec = t / (t + f_) if (t + f_) else 0.0
-        print(f"  {f}: tp={t} fp={f_} prec={prec:.2f}")
+        n = t + f_
+        prec = t / n if n else 0.0
+        print(f"  {f}: tp={t} fp={f_} n={n} prec={prec:.2f}")
 
-    print("\n=== Band grid (SKIP_FT/LLM) ===\n")
+    print("\n=== Band grid (SKIP_IMPLICIT/LLM) ===\n")
     lows = [0.20, 0.25, 0.30, 0.35]
     highs = [0.55, 0.60, 0.65, 0.70]
     best = None
@@ -115,21 +138,21 @@ def main() -> None:
             if lo >= hi:
                 continue
             cfg = FusionConfig(band_low=lo, band_high=hi)
-            # Sadece GREEN/YELLOW satirlari (fusion etkisi)
             y_tp = y_fn = g_tp = g_fp = 0
             for r in rows:
-                exp = str(r.get("expected_triage") or "")
-                if exp not in {"GREEN", "YELLOW"}:
+                exp = _expected_level(r)
+                if exp is None:
                     continue
-                if _is_hard(r.get("question") or ""):
+                q = r.get("question") or ""
+                if _is_hard(q):
                     continue
-                pred = _fusion_level(r.get("question") or "", cfg)
+                pred = _fusion_level(q, cfg)
                 if exp == "YELLOW":
                     if pred == "YELLOW":
                         y_tp += 1
                     else:
                         y_fn += 1
-                elif exp == "GREEN":
+                else:
                     if pred == "GREEN":
                         g_tp += 1
                     else:
@@ -139,7 +162,7 @@ def main() -> None:
             score = y_rec + g_prec
             print(
                 f"  low={lo:.2f} high={hi:.2f} Y_rec={y_rec:.2f} G_prec={g_prec:.2f} "
-                f"(nY={y_tp+y_fn} nG={g_tp+g_fp})"
+                f"(nY={y_tp + y_fn} nG={g_tp + g_fp})"
             )
             if best is None or score > best[0]:
                 best = (score, lo, hi, y_rec, g_prec)
@@ -149,7 +172,8 @@ def main() -> None:
             f"\nEn iyi (yon gosterici): low={best[1]} high={best[2]} "
             f"Y_rec={best[3]:.2f} G_prec={best[4]:.2f}"
         )
-        print("Not: n kucukse varyans yuksek; hard CI gate degil.")
+        print("Not: soft agirliklar kilitli; band secimi yon gosterici.")
+        print("Once klinik kacirmayan (Y_rec), sonra egitim kirletmeyen (G_prec).")
 
 
 if __name__ == "__main__":

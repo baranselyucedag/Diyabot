@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Literal
 
-from src.api.triage.ft_encoder import score_ft
+from src.api.triage.implicit_score import score_implicit
 from src.api.triage.fusion import evaluate_fusion
 from src.api.triage.grey_zone import TEMPERED_YELLOW_REASON, classify_grey_zone
 from src.api.triage.numeric import evaluate_numeric_triage
@@ -58,7 +58,7 @@ class TriageDecision:
 
 
 def detect_triage_detailed(message: str) -> TriageDecision:
-    """Tam triage: hard veto → soft+numeric+ft fusion → grey band LLM.
+    """Tam triage: hard veto → soft+numeric+örtük skor fusion → grey band LLM.
 
     Soft regex flags numeric sonucundan bağımsız her zaman hesaplanır.
     """
@@ -104,12 +104,12 @@ def detect_triage_detailed(message: str) -> TriageDecision:
         )
 
     num_y = numeric is not None and numeric.level == "YELLOW"
-    ft = score_ft(text)
+    imp = score_implicit(text)
     fus = evaluate_fusion(
         text,
         numeric_yellow=bool(num_y),
         soft_flags=soft_flags,
-        ft_score=ft,
+        implicit_score=imp,
     )
 
     # Defense-in-depth guard
