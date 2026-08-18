@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import threading
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -87,16 +88,29 @@ def resolve_device(device: str | None = None) -> str:
         return "cpu"
 
 
+_embedder_cache: dict[tuple[str, str], Any] = {}
+_embedder_lock = threading.Lock()
+
+
 def load_embedder(model_id: str = EMBED_MODEL_ID, device: str | None = None):
     """SentenceTransformer ile bge-m3 modelini yükler ve döner.
 
-    Not: Model GPU'ya alınır; iş bitince caller empty_cache çağırabilir.
+    Singleton: aynı (model, device) için tek instance döner. 4GB GPU'da aynı
+    modelin iki kez yüklenmesi (triage + retrieval) OOM yapıyordu; bu cache
+    hem implicit_score hem retrieve hem grey_model'in AYNI instance'ı paylaşmasını
+    sağlar. Caller'ın gpu_free yapması cache'i etkilemez (model yaşar).
     """
     from sentence_transformers import SentenceTransformer
 
     dev = resolve_device(device)
-    print(f"Embedding modeli yükleniyor: {model_id} (device={dev})")
-    return SentenceTransformer(model_id, device=dev)
+    key = (model_id, dev)
+    with _embedder_lock:
+        if key in _embedder_cache:
+            return _embedder_cache[key]
+        print(f"Embedding modeli yükleniyor: {model_id} (device={dev})")
+        model = SentenceTransformer(model_id, device=dev)
+        _embedder_cache[key] = model
+        return model
 
 
 def encode_texts(

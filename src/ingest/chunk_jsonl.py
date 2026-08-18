@@ -76,7 +76,7 @@ NAMED_HEADING_PATTERN = re.compile(
 
 # Sadece büyük harf olan kısa başlıklar; uzun metinleri yanlışlıkla başlık saymamak için sınırlı.
 UPPERCASE_HEADING_PATTERN = re.compile(
-    r"^[A-ZÇĞİÖŞÜ0-9][A-ZÇĞİÖŞÜ0-9\s:,\-–—()/.]{4,100}$"
+    r"^[A-ZÇĞİÖŞÜ0-9][A-ZÇĞİÖŞÜ0-9\s:,\-–—()/.!?]{4,100}$"
 )
 
 # Yalnızca gerçek acil yönlendirme ifadeleri.
@@ -118,7 +118,12 @@ INLINE_HEADING_CUE = re.compile(
     r"stres\s+yönetimi|uyku\s+düzeni|boy\s+ölçümü|kilo\s+ölçümü|"
     r"bel\s+çevresi|vücut\s+kitle|ölçüm\s+hataları|"
     r"uygulamanın|motivasyonel|davranış\s+değişikliği|"
-    r"görev\s+tanımı|dokümantasyon|iletişimin\s+önemi"
+    r"görev\s+tanımı|dokümantasyon|iletişimin\s+önemi|"
+    r"psikolojik\s+destek|yolculuk|seyahat|sosyal\s+hak\w*|cinsel\s+yaşam|"
+    r"aşılama|dini\s+uygulama|sigara|alkol\s+kullan|ayak\s+bakım\w*|ayakkabı\w*|"
+    r"tırnak\w*|cilt\s+bakım\w*|ağız\w*|diş\s+sağlığı|sinir\s+hasar\w*|damar\s+hasar\w*|"
+    r"ayak\s+sorun\w*|iş\s+hayatı|çalışma\s+yaşamı|"
+    r"obezite\s+cerrahi|obezite\w*|cerrahi\s+aday|kilo\s+kayb\w*|kilo\s+verme|kilo\s+kontrol"
     r")"
 )
 

@@ -54,6 +54,19 @@ def _skip_llm() -> bool:
     }
 
 
+def _use_llm_grey() -> bool:
+    """LLM'e zorla geçiş (A/B testi) için TRIAGE_USE_LLM_GREY=1.
+
+    Varsayılan: yerel LightGBM model kullanılır.
+    """
+    return (os.getenv("TRIAGE_USE_LLM_GREY") or "").strip() in {
+        "1",
+        "true",
+        "True",
+        "yes",
+    }
+
+
 def _parse_json_level(text: str) -> GreyZoneResult | None:
     """LLM metninden JSON level/reason çıkar."""
     raw = (text or "").strip()
@@ -85,7 +98,16 @@ def classify_grey_zone(
     numeric_yellow: bool,
     timeout_s: float = 10.0,
 ) -> GreyZoneResult:
-    """Nemotron ile grey-band sınıflandırma. Timeout → tempered YELLOW."""
+    """Grey-band sınıflandırma: varsayılan yerel model, TRIAGE_USE_LLM_GREY=1 ise Nemotron.
+
+    Timeout / hata → DEFAULT YELLOW + temkinli reason (tempered).
+    """
+    # Yerel LightGBM model (varsayılan). LLM'e dönmek için TRIAGE_USE_LLM_GREY=1.
+    if not _use_llm_grey():
+        from src.api.triage.grey_model import classify_grey_zone_model
+
+        return classify_grey_zone_model(message)
+
     if _skip_llm():
         return GreyZoneResult(
             level="YELLOW",
