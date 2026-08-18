@@ -32,3 +32,6 @@ Thumbs.db
 
 scripts/
 docs/
+data/raw/
+data/eval_results/
+tests/
