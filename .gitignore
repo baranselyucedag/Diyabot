@@ -29,9 +29,12 @@ Thumbs.db
 .cache/
 
 # Folder
-
 scripts/
 docs/
 data/raw/
 data/eval_results/
 tests/
+
+# Big data
+train-00000-of-00001.parquet        
+classification_model/data/raw/train.csv

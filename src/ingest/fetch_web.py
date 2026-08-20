@@ -66,17 +66,21 @@ def build_records(title: str, blocks: list[str], source: str) -> list[dict]:
     doc_id = slugify(title)
     records: list[dict] = []
     for i, b in enumerate(blocks):
-        # baslik gibi gorunenleri isaretle (chunk_jsonl'in tanimasi icin)
         text = b
-        if len(b) < 90 and not b.endswith(".") and b[-1] not in ".,;:!?":
-            text = b
+        # Soru formatındaki kısa satırlar (ör. "Tip 2 Diyabet Nedir?") bu sitede
+        # bölüm başlığıdır; chunk_jsonl bunları section olarak işler.
+        is_heading = (
+            len(b) <= 100
+            and b.rstrip().endswith("?")
+            and not b.startswith(("SORU:", "S:", "YANIT:", "C:"))
+        )
         records.append(
             {
                 "document_id": doc_id,
                 "source_file": source,
                 "paragraph_index": i,
                 "text": text,
-                "block_type": "paragraph",
+                "block_type": "heading" if is_heading else "paragraph",
             }
         )
     return records

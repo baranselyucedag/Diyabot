@@ -778,6 +778,12 @@ def make_chunks(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             flush_buffer()
             break
 
+        # fetch_web.py'nin işaretlediği soru başlıkları (ör. "Tip 2 Diyabet Nedir?").
+        if record.get("block_type") == "heading":
+            flush_buffer()
+            section = text
+            continue
+
         heading_type = get_heading_type(text)
 
         if heading_type == "chapter":
