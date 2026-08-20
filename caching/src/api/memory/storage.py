@@ -31,6 +31,7 @@ from src.api.memory.models import (
     Profile,
     Turn,
 )
+from src.api.memory.logger import log_event
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -159,30 +160,62 @@ def write_json_atomic(path: Path, data: BaseModel | dict) -> None:
         os.fsync(tmp.fileno())
         tmp_path = Path(tmp.name)
 
-    with portalocker.Lock(_lock_path_for(path), timeout=10):
+    with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_EX | portalocker.LOCK_NB):
         os.replace(tmp_path, path)
 
 
-def read_json(path: Path, model: Type[T]) -> Optional[T]:
+def read_json(path: Path, model: Type[T], repair_fn=None) -> Optional[T]:
     """JSON dosyasını okuyup verilen Pydantic modeline doğrular.
 
     Dosya yoksa None döner. Dosya bozuksa (geçersiz JSON) veya modele
     uymuyorsa (eksik/yanlış tipte alan) hata fırlatmak yerine None döner ve
     durum loglanır — tek bir bozuk kayıt tüm sistemi çökertmesin diye.
+
+    repair_fn (opsiyonel): model doğrulaması ValueError ile patlarsa ham dict'i
+    tamir edip tekrar denemek için çağrılır (örn. _repair_notes_store). Şema-özel
+    tamir mantığı bu generic fonksiyonun DIŞINDA tutulur; ileride başka bir model
+    için tamir gerekirse read_json'a dokunmadan yeni bir repair_fn yazılır.
     """
     if not path.exists():
         return None
 
     try:
         with portalocker.Lock(
-            _lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH
+            _lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH | portalocker.LOCK_NB
         ):
             with open(path, "r", encoding="utf-8") as f:
                 raw = json.load(f)
-        return model.model_validate(raw)
+        try:
+            return model.model_validate(raw)
+        except ValueError:
+            if repair_fn is None or not isinstance(raw, dict):
+                raise
+            return model.model_validate(repair_fn(raw))
     except (json.JSONDecodeError, TypeError, ValueError) as exc:
         _log_warning(f"read_json_failed path={path} error={exc}")
         return None
+
+
+def _repair_notes_store(raw: dict) -> dict:
+    """Bilinmeyen Note.category değerlerini "observation"a düşürür (geriye-uyum).
+
+    Note.category Literal'a çevrildiği için eski disk kayıtlarındaki geçersiz
+    kategori string'i tüm store'un okunamaz hale gelmesine yol açardı; kayıt
+    korunur, kategori güvenli varsayılana çekilir ve durum loglanır.
+    """
+    valid_categories = {"symptom", "observation", "plan", "measurement", "advice"}
+    repaired = dict(raw)
+    repaired_items = []
+    for item in raw.get("items", []):
+        item = dict(item)
+        if item.get("category") not in valid_categories:
+            _log_warning(
+                f"invalid_note_category_fallback category={item.get('category')!r}"
+            )
+            item["category"] = "observation"
+        repaired_items.append(item)
+    repaired["items"] = repaired_items
+    return repaired
 
 
 def append_jsonl(path: Path, record: BaseModel) -> None:
@@ -190,15 +223,13 @@ def append_jsonl(path: Path, record: BaseModel) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     line = record.model_dump_json() + "\n"
 
-    with portalocker.Lock(_lock_path_for(path), timeout=10):
+    with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_EX | portalocker.LOCK_NB):
         with open(path, "a", encoding="utf-8") as f:
             f.write(line)
 
 
 def _log_warning(message: str) -> None:
-    # Basit stderr fallback; gerçek log sistemi (logger.py, FAZ 4.2) hazır
-    # olduğunda buradan çağrılacak şekilde değiştirilebilir.
-    print(f"[WARN][storage] {message}")
+    log_event("storage", "warning", "", message=message)
 
 
 # ---------------------------------------------------------------------------
@@ -232,7 +263,7 @@ def _notes_path(conv_id: str) -> Path:
 
 
 def load_notes(conv_id: str) -> Optional[NotesStore]:
-    return read_json(_notes_path(conv_id), NotesStore)
+    return read_json(_notes_path(conv_id), NotesStore, repair_fn=_repair_notes_store)
 
 
 def save_notes(conv_id: str, notes: NotesStore) -> None:
@@ -302,7 +333,7 @@ def load_turns(conv_id: str, limit: Optional[int] = None) -> list[Turn]:
         return []
 
     turns: list[Turn] = []
-    with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH):
+    with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH | portalocker.LOCK_NB):
         with open(path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
@@ -345,7 +376,11 @@ def save_summary(conv_id: str, summary: str) -> None:
         os.fsync(tmp.fileno())
         tmp_path = Path(tmp.name)
 
-    with portalocker.Lock(_lock_path_for(path), timeout=10):
+    # LOCK_NB bilinçli: blocking modda portalocker'ın timeout'u etkisizdir
+    # (testlerde "timeout has no effect in blocking mode" uyarısı). Non-blocking
+    # edinim + timeout sayesinde kilit kısa sürede alınamazsa istisna fırlar ve
+    # çöken bir process'in bıraktığı kilit yüzünden sonsuza dek beklenmez.
+    with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_EX | portalocker.LOCK_NB):
         os.replace(tmp_path, path)
 
 
@@ -356,7 +391,7 @@ def load_summary(conv_id: str) -> Optional[str]:
         return None
 
     try:
-        with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH):
+        with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH | portalocker.LOCK_NB):
             with open(path, "r", encoding="utf-8") as f:
                 return f.read().strip()
     except OSError as exc:

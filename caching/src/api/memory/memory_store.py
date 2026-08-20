@@ -18,7 +18,9 @@ from src.api.memory.models import (
     NotesStore,
     NoteStaleness,
     PendingConflictsStore,
+    PatientProfile,
     Profile,
+    ProfileMetadata,
     Turn,
     TurnRole,
 )
@@ -48,7 +50,6 @@ def load_memory_context(conv_id: str) -> dict:
     profile = load_profile(conv_id)
     if profile is None:
         # Yeni konuşma için boş profil
-        from src.api.memory.models import PatientProfile, ProfileMetadata
         profile = Profile(
             version=1,
             updated_at=utcnow(),
@@ -166,31 +167,6 @@ async def create_turn_atomic(
         )
 
 
-def _append_turn_and_update_index(conv_id: str, turn: Turn) -> MemoryIndex:
-    """
-    PRIVATE — Kilitsiz, race condition riski.
-    Dışarıdan ÇAĞIRMA; atomik işlem için create_turn_atomic kullan.
-    Sadece test/debug veya maintenance.py içinde zaten lock tutulduğunda kullanılabilir.
-    """
-    append_turn(conv_id, turn)
-
-    index = load_index(conv_id)
-    if index is None:
-        index = MemoryIndex(
-            turn_count=1,
-            last_summary_at_turn=0,
-            last_note_extraction_at_turn=0,
-            last_profile_update_at_turn=0,
-            created_at=utcnow(),
-        )
-    else:
-        index.turn_count += 1
-
-    index.updated_at = utcnow()
-    save_index(conv_id, index)
-    return index
-
-
 # ---------------------------------------------------------------------------
 # Not yönetimi
 # ---------------------------------------------------------------------------
@@ -215,7 +191,8 @@ def save_notes_with_limit(
     if max_notes is None:
         max_notes = MEMORY_CONFIG["max_notes_per_conversation"]
 
-    items = notes.items
+    # Kopya üzerinde çalış: çağıranın liste nesnesini yerinde mutate etme.
+    items = list(notes.items)
 
     # Tutulacaklar önde:
     # - fresh (False) < stale (True)  → fresh başta
@@ -231,8 +208,9 @@ def save_notes_with_limit(
     )
 
     if len(items) > max_notes:
-        notes.items = items[:max_notes]  # İlk max_notes = en değerli notlar
+        items = items[:max_notes]  # İlk max_notes = en değerli notlar
 
+    notes.items = items
     notes.updated_at = utcnow()
     save_notes(conv_id, notes)
 

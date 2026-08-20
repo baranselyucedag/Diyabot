@@ -15,6 +15,7 @@ Kilitleme:
 
 from __future__ import annotations
 
+import asyncio
 import uuid
 from datetime import datetime, timedelta
 from typing import Optional
@@ -31,9 +32,9 @@ from src.api.memory.storage import (
     get_conversation_lock,
     load_notes,
     load_pending_conflicts,
-    save_notes,
     save_pending_conflicts,
 )
+from src.api.memory.memory_store import save_notes_with_limit
 from src.api.memory.timeutil import utcnow
 
 
@@ -54,7 +55,7 @@ def append_followup_note(conv_id: str, message: str) -> None:
         )
     )
     notes.updated_at = utcnow()
-    save_notes(conv_id, notes)
+    save_notes_with_limit(conv_id, notes)
 
 
 def expire_pending_conflicts_locked(
@@ -114,4 +115,6 @@ async def expire_pending_conflicts(conv_id: str) -> int:
     """Public API: conversation_lock alıp expire_pending_conflicts_locked çağırır."""
     lock = get_conversation_lock(conv_id)
     async with lock:
-        return expire_pending_conflicts_locked(conv_id)
+        return await asyncio.to_thread(
+            expire_pending_conflicts_locked, conv_id
+        )

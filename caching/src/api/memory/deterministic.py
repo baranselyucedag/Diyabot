@@ -3,8 +3,8 @@
 Plan dokümanına (cahing_mimari_tasarim.md §3) birebir uyumludur:
 - CONFLICT_RULES, FIELD_TO_NOTE_CATEGORY, STALENESS_KEYWORD_RULES, TRIAGE_FIELD_RISK
   sabitleri plan'daki gibidir.
-- check_staleness_deterministic, tespit ettiği notları doğrudan update_note_staleness
-  ile işaretler ve log_event ile kaydeder.
+- detect_stale_notes SAFTIR: yan etki (disk yazma / log) üretmez, sadece tespit
+  listesi döner. Yazma + loglama çağıranın (maintenance.py) sorumluluğundadır.
 """
 
 from __future__ import annotations
@@ -13,9 +13,14 @@ import re
 from typing import Optional
 
 from src.api.memory.config import MEMORY_CONFIG
-from src.api.memory.logger import log_event
-from src.api.memory.memory_store import update_note_staleness
-from src.api.memory.models import CandidateNote, Note, Profile, Turn
+from src.api.memory.models import (
+    CandidateNote,
+    Note,
+    PendingConflictStatus,
+    Profile,
+    Turn,
+)
+from src.api.memory.storage import load_pending_conflicts
 from src.api.memory.timeutil import utcnow
 
 
@@ -31,6 +36,9 @@ CONFLICT_RULES = {
     "complications": {
         "add": {"duplicate": {"action": "IGNORE"}},
     },
+    "allergies": {
+        "add": {"duplicate": {"action": "FLAG_PENDING", "conflict_type": "DUPLICATE_ALLERGY"}},
+    },
     "goals": {
         "update": {"default": {"action": "LATEST_WINS"}},
     },
@@ -41,8 +49,12 @@ FIELD_TO_NOTE_CATEGORY = {
     "goals": ["plan", "advice"],
     "complications": ["symptom"],
     "monitoring": ["measurement"],
+    "allergies": ["observation"],
 }
 
+# Bilinen sınır (P3, bilinçli ödünleşim): keyword eşleşmesi substring tabanlıdır;
+# Türkçe morfoloji/stemming ve bağlam analizi yoktur ("değiştirdim" her bağlamda
+# yakalanır). LLM tabanlı doğrulamaya geçilmeden giderilemez — kabul edildi.
 STALENESS_KEYWORD_RULES = {
     "observation": [   # ilaç / tedavi notları
         (["bıraktım", "durduruldu", "kesildi", "kullanmıyorum", "bıraktırdım", "sıfırlandı", "değiştirdim"], "status_conflict_if_active"),
@@ -114,6 +126,7 @@ TURKISH_STOPWORDS: frozenset[str] = frozenset(
         "nasıl", "neden", "niye", "hangi", "kaç",
     }
 )
+NORMALIZED_TURKISH_STOPWORDS = frozenset(normalize(word) for word in TURKISH_STOPWORDS)
 
 
 # ---------------------------------------------------------------------------
@@ -124,7 +137,7 @@ TURKISH_STOPWORDS: frozenset[str] = frozenset(
 def word_set(text: str) -> set[str]:
     """Normalize edilmiş, stopword'lerden arındırılmış kelime kümesi."""
     norm_text = normalize(text)
-    return set(re.findall(r"[\w]+", norm_text)) - TURKISH_STOPWORDS
+    return set(re.findall(r"[\w]+", norm_text)) - NORMALIZED_TURKISH_STOPWORDS
 
 
 def verify_grounding_deterministic(
@@ -213,18 +226,23 @@ def check_conflicts(proposed_change: dict, current_profile: Profile) -> dict:
     rules = CONFLICT_RULES.get(field, {})
     action_rules = rules.get(action, {})
 
-    # medications add: duplicate name check
-    if field == "medications" and action == "add":
-        name = detail.get("name", "").strip().lower()
+    # medications/allergies add: duplicate name check
+    if field in {"medications", "allergies"} and action == "add":
+        name = normalize(str(detail.get("name", detail.get("value", ""))).strip())
         if name:
-            for med in current_profile.patient.medications:
-                if med.name.strip().lower() == name:
-                    rule = action_rules.get("duplicate_name", {})
+            existing_values = (
+                [med.name for med in current_profile.patient.medications]
+                if field == "medications"
+                else current_profile.patient.allergies
+            )
+            for existing in existing_values:
+                if normalize(existing.strip()) == name:
+                    rule = action_rules.get("duplicate_name", action_rules.get("duplicate", {}))
                     return {
                         "has_conflict": True,
                         "action": rule.get("action", "FLAG_PENDING"),
-                        "conflict_type": rule.get("conflict_type", "DUPLICATE_MED"),
-                        "details": {"existing_med": med.name},
+                        "conflict_type": rule.get("conflict_type", "DUPLICATE_MED" if field == "medications" else "DUPLICATE_ALLERGY"),
+                        "details": {"existing": existing},
                     }
         return {"has_conflict": False, "action": "PROCEED", "conflict_type": None, "details": {}}
 
@@ -240,10 +258,10 @@ def check_conflicts(proposed_change: dict, current_profile: Profile) -> dict:
 
     # complications add: duplicate ignore
     if field == "complications" and action == "add":
-        value = detail.get("value", "").strip().lower()
+        value = normalize(str(detail.get("value", "")).strip())
         if value:
             for comp in current_profile.patient.complications:
-                if comp.strip().lower() == value:
+                if normalize(comp.strip()) == value:
                     rule = action_rules.get("duplicate", {})
                     return {
                         "has_conflict": False,
@@ -268,20 +286,40 @@ def check_conflicts(proposed_change: dict, current_profile: Profile) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Staleness kontrolü (changed_field filtresi + keyword + plan yaş)
+# Staleness tespiti (changed_field filtresi + keyword + plan yaş) — SAF, yan etkisiz
 # ---------------------------------------------------------------------------
 
 
 def _check_profile_field_active(profile: Profile, note: Note) -> bool:
     """Note içeriğinde geçen bir ilacın profilde hâlâ "active" olup olmadığını döner."""
-    content_lower = note.content.lower()
+    content_lower = normalize(note.content)
     for med in profile.patient.medications:
-        if med.name.lower() in content_lower and med.status.value == "active":
+        if normalize(med.name) in content_lower and med.status.value == "active":
             return True
     return False
 
 
-def check_staleness_deterministic(
+def _pending_conflict_fields(conv_id: str) -> set[str]:
+    """conv_id için PENDING durumdaki çakışmaların profil alanlarını döner.
+
+    conv_id boşsa (test/doğrudan çağrı) boş küme döner — disk erişimi yapılmaz.
+    """
+    if not conv_id:
+        return set()
+    store = load_pending_conflicts(conv_id)
+    if store is None:
+        return set()
+    fields: set[str] = set()
+    for item in store.items:
+        if item.status != PendingConflictStatus.PENDING:
+            continue
+        field = (item.existing or {}).get("field") or (item.proposed or {}).get("field")
+        if field:
+            fields.add(field)
+    return fields
+
+
+def detect_stale_notes(
     profile: Profile,
     notes: list[Note],
     changed_field: Optional[str] = None,
@@ -290,50 +328,62 @@ def check_staleness_deterministic(
     """
     Profil + notlar + değişen alan → stale olabilecek notları tespit eder.
 
-    Tespit edilen her not doğrudan `update_note_staleness` ile "stale" işaretlenir
-    ve `log_event` ile kaydedilir. Return, tespit edilen kalemlerin listesidir
-    ({"type": str, "note_id": str}).
+    SAF fonksiyondur: disk yazmaz, log atmaz; yalnızca tespit listesi döner
+    ({"type": str, "note_id": str}). Yazma (toplu) ve loglama çağırana aittir
+    (maintenance.py). Aynı not için en fazla bir kayıt döner (ilk eşleşen sebep).
 
     İki bağımsız kontrol:
       1. Keyword-bazlı çelişki: SADECE changed_field ile ilgili kategorilerdeki notlarda.
+         Ancak changed_field için PENDING bir çakışma varsa bu blok atlanır —
+         profil henüz güncellenmediği için doğru bilgi taşıyan yeni not
+         (ör. "bıraktım" notu, ilaç hâlâ active göründüğünden) yanlışlıkla stale
+         işaretlenirdi. Pending conflict çözülene kadar beklenir.
       2. Yaş kontrolü: tüm "plan" notlarında (> staleness_plan_max_days gün).
+         Profil durumundan bağımsız olduğu için pending kontrolünden etkilenmez.
     """
     stale_items: list[dict] = []
+    stale_note_ids: set[str] = set()
 
-    # 1. Keyword-bazlı çelişki — SADECE ilgili kategorilerde
-    target_categories = FIELD_TO_NOTE_CATEGORY.get(changed_field, [])
-    target_notes = [
-        n for n in notes
-        if n.category in target_categories and n.staleness.value != "stale"
-    ]
+    # 1. Keyword-bazlı çelişki — SADECE ilgili kategorilerde, pending yoksa
+    if changed_field not in _pending_conflict_fields(conv_id):
+        target_categories = FIELD_TO_NOTE_CATEGORY.get(changed_field, [])
+        target_notes = [
+            n for n in notes
+            if n.category in target_categories and n.staleness.value != "stale"
+        ]
 
-    for note in target_notes:
-        rules = STALENESS_KEYWORD_RULES.get(note.category, [])
-        for keywords, kural in rules:
-            if any(k in note.content.lower() for k in keywords):
-                if kural == "status_conflict_if_active":
-                    if _check_profile_field_active(profile, note):
-                        stale_items.append({"type": "PROFILE_CONFLICT", "note_id": note.note_id})
-                elif kural == "dose_conflict":
-                    stale_items.append({"type": "DOSE_CONFLICT", "note_id": note.note_id})
-                elif kural == "goal_replaced":
-                    stale_items.append({"type": "GOAL_REPLACED", "note_id": note.note_id})
-                elif kural == "resolved_conflict":
-                    stale_items.append({"type": "RESOLVED_CONFLICT", "note_id": note.note_id})
-                break
+        for note in target_notes:
+            rules = STALENESS_KEYWORD_RULES.get(note.category, [])
+            for keywords, kural in rules:
+                if any(normalize(k) in normalize(note.content) for k in keywords):
+                    if kural == "status_conflict_if_active":
+                        if _check_profile_field_active(profile, note):
+                            if note.note_id not in stale_note_ids:
+                                stale_items.append({"type": "PROFILE_CONFLICT", "note_id": note.note_id})
+                                stale_note_ids.add(note.note_id)
+                    elif kural == "dose_conflict":
+                        if note.note_id not in stale_note_ids:
+                            stale_items.append({"type": "DOSE_CONFLICT", "note_id": note.note_id})
+                            stale_note_ids.add(note.note_id)
+                    elif kural == "goal_replaced":
+                        if note.note_id not in stale_note_ids:
+                            stale_items.append({"type": "GOAL_REPLACED", "note_id": note.note_id})
+                            stale_note_ids.add(note.note_id)
+                    elif kural == "resolved_conflict":
+                        if note.note_id not in stale_note_ids:
+                            stale_items.append({"type": "RESOLVED_CONFLICT", "note_id": note.note_id})
+                            stale_note_ids.add(note.note_id)
+                    break
 
-    # 2. Yaş kontrolü — tüm "plan" notlarında
+    # 2. Yaş kontrolü — tüm "plan" notlarında (pending'den bağımsız)
     for note in notes:
         if note.staleness.value == "stale":
             continue
         if note.category == "plan":
             age_days = (utcnow() - note.created_at).days
             if age_days > MEMORY_CONFIG["staleness_plan_max_days"]:
-                stale_items.append({"type": "OLD_PLAN", "note_id": note.note_id})
-
-    # 3. Tespit edilenleri işaretle + logla
-    for item in stale_items:
-        update_note_staleness(conv_id, item["note_id"], "stale")
-        log_event("staleness", "staleness_conflict", conv_id, **item)
+                if note.note_id not in stale_note_ids:
+                    stale_items.append({"type": "OLD_PLAN", "note_id": note.note_id})
+                    stale_note_ids.add(note.note_id)
 
     return stale_items

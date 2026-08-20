@@ -60,7 +60,7 @@ class NoteStaleness(str, Enum):
 class Note(BaseModel):
     note_id: str
     content: str
-    category: str
+    category: Literal["symptom", "observation", "plan", "measurement", "advice"]
     source_turns: list[str] = Field(default_factory=list)
     confidence: float = 1.0
     staleness: NoteStaleness = NoteStaleness.FRESH

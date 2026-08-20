@@ -15,13 +15,15 @@ from __future__ import annotations
 
 import asyncio
 import json
+import time
 import uuid
 from typing import Optional
 
 from src.api.memory.config import MEMORY_CONFIG
 from src.api.memory.deterministic import (
     check_conflicts,
-    check_staleness_deterministic,
+    detect_stale_notes,
+    normalize,
     triage_classify,
     verify_grounding_deterministic,
     word_set,
@@ -52,6 +54,7 @@ from src.api.memory.storage import (
     get_conversation_lock,
     load_pending_conflicts,
     save_index,
+    save_notes,
     save_pending_conflicts,
     save_profile,
     save_summary,
@@ -136,9 +139,9 @@ def _find_source_turn_id_for_evidence(evidence_span: str, turns: list[Turn]) -> 
     if not evidence_span or not turns:
         return None
 
-    evidence_lower = evidence_span.strip().lower()
+    evidence_lower = normalize(evidence_span.strip())
     for turn in turns:
-        if evidence_lower in turn.content.lower():
+        if evidence_lower in normalize(turn.content):
             return turn.turn_id
 
     evidence_words = word_set(evidence_span)
@@ -192,15 +195,15 @@ def _apply_change_to_profile(profile: Profile, field: str, action: str, detail: 
             )
         elif action == "remove":
             # REWRITE_AS_UPDATE: ilacı silmek yerine durdur (status=stopped).
-            name = detail.get("name", "").strip().lower()
+            name = normalize(str(detail.get("name", "")).strip())
             for med in patient.medications:
-                if med.name.strip().lower() == name:
+                if normalize(med.name.strip()) == name:
                     med.status = MedicationStatus.STOPPED
                     break
         elif action == "update":
-            name = detail.get("name", "").strip().lower()
+            name = normalize(str(detail.get("name", "")).strip())
             for med in patient.medications:
-                if med.name.strip().lower() == name:
+                if normalize(med.name.strip()) == name:
                     if "dose" in detail:
                         med.dose = detail["dose"]
                     if "frequency" in detail:
@@ -369,6 +372,9 @@ async def memory_maintenance_task(
     """
     lock = get_conversation_lock(conv_id)
     async with lock:
+        task_start = time.perf_counter()
+        llm_calls = 0
+
         ctx = await asyncio.to_thread(load_memory_context, conv_id)
         profile: Profile = ctx["profile"]
         notes = ctx["notes"]
@@ -376,6 +382,7 @@ async def memory_maintenance_task(
 
         # ADIM A — CALL 2
         result = await memory_maintenance_call(profile, notes, recent_turns, needs_summary)
+        llm_calls += 1
 
         changed_field: Optional[str] = None
         profile_updated = False
@@ -389,6 +396,7 @@ async def memory_maintenance_task(
             if risk["is_high_risk"]:
                 # ADIM C — CALL 3 (koşullu)
                 verify = await critical_verification(pu, profile, recent_turns)
+                llm_calls += 1
                 onaylandi = (
                     verify.onayla
                     and verify.eminlik >= MEMORY_CONFIG["critical_verify_threshold"]
@@ -465,14 +473,22 @@ async def memory_maintenance_task(
             notes_added = len(grounded_notes)
             index.last_note_extraction_at_turn = index.turn_count
 
-        # ADIM D — staleness (güncel profil + güncel notlar ile)
-        stale_items = await asyncio.to_thread(
-            check_staleness_deterministic,
+        # ADIM D — staleness tespiti (saf) + TOPLU yazma (N×write yerine 1×write)
+        stale_items = detect_stale_notes(
             profile,
             notes.items,
             changed_field=changed_field,
             conv_id=conv_id,
         )
+        if stale_items:
+            stale_ids = {item["note_id"] for item in stale_items}
+            for note in notes.items:
+                if note.note_id in stale_ids:
+                    note.staleness = NoteStaleness.STALE
+            notes.updated_at = utcnow()
+            await asyncio.to_thread(save_notes, conv_id, notes)
+            for item in stale_items:
+                log_event("staleness", "staleness_conflict", conv_id, **item)
 
         # Özet
         summary_saved = False
@@ -499,6 +515,8 @@ async def memory_maintenance_task(
             summary_saved=summary_saved,
             stale_notes=len(stale_items),
             expired_conflicts=expired_conflicts,
+            llm_calls=llm_calls,
+            latency_ms=round((time.perf_counter() - task_start) * 1000),
         )
 
         return {

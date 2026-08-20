@@ -16,6 +16,8 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+import portalocker
+
 from src.api.memory.config import MEMORY_CONFIG
 from src.api.memory.timeutil import utcnow
 
@@ -76,5 +78,17 @@ def log_event(component: str, event: str, conv_id: str, **kwargs) -> None:
         "conv_id": conv_id,
         **kwargs,
     }
-    with open(path, "a", encoding="utf-8") as f:
-        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    # TODO(P3): yüksek frekansta her olayda open/close yerine process başına
+    # güvenli bir writer/buffer düşünülebilir; MVP'de append maliyeti kabul edilir.
+    # Kilit: storage.py ile aynı desen (LOCK_EX | LOCK_NB + timeout) — eşzamanlı
+    # process'lerde log satırı karışmasını önler. Kilit alınamazsa log düşer ama
+    # çağıran (ör. storage.read_json hata yolu) asla log yüzünden patlamaz.
+    lock_path = path.with_suffix(path.suffix + ".lock")
+    try:
+        with portalocker.Lock(
+            lock_path, timeout=10, flags=portalocker.LOCK_EX | portalocker.LOCK_NB
+        ):
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    except (portalocker.exceptions.AlreadyLocked, OSError):
+        pass  # log best-effort'tur; kilit/disk hatası ana akışı bozmamalı
