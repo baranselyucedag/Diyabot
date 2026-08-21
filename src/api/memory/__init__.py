@@ -81,6 +81,20 @@ from .logger import (
     log_event,
 )
 
+from .encryption import (
+    get_fernet,
+    encrypt_bytes,
+    decrypt_bytes,
+    MasterKeyError,
+)
+
+from .metrics import (
+    record_event,
+    get_counter,
+    render_metrics,
+    reset_counters,
+)
+
 from .expiry import (
     expire_pending_conflicts_locked,
     expire_pending_conflicts,
@@ -156,6 +170,14 @@ __all__ = [
     "MEMORY_CONFIG",
     "utcnow",
     "log_event",
+    "get_fernet",
+    "encrypt_bytes",
+    "decrypt_bytes",
+    "MasterKeyError",
+    "record_event",
+    "get_counter",
+    "render_metrics",
+    "reset_counters",
     "expire_pending_conflicts_locked",
     "expire_pending_conflicts",
     "append_followup_note",

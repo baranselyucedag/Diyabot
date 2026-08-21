@@ -8,6 +8,7 @@ from typing import Any, Literal, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse, PlainTextResponse
 from pydantic import BaseModel, Field
 
 from src.api.env import load_project_env
@@ -16,6 +17,8 @@ from src.api.env import load_project_env
 load_project_env()
 
 from src.api.pipeline import run_chat
+from src.api.memory import storage as memory_storage
+from src.api.memory.metrics import render_metrics
 
 app = FastAPI(
     title="Tip-2 Diyabet Chatbot API",
@@ -57,6 +60,7 @@ class ChatRequest(BaseModel):
 class SourceOut(BaseModel):
     document: str
     section: str
+    section_label: Optional[str] = None
     snippet: Optional[str] = None
 
 
@@ -69,9 +73,47 @@ class ChatResponse(BaseModel):
 
 
 @app.get("/health")
-def health() -> dict[str, str]:
-    """Basit canlılık kontrolü."""
-    return {"status": "ok"}
+def health() -> Any:
+    """Canlılık + memory-ready kontrolü.
+
+    - ``data/`` dizinine yazma izni var mı (probe dosyası yaz/sil).
+    - memory modülü sağlıklı yüklenmiş mi (``get_conversation_lock`` çağrılabilir).
+
+    Sorun varsa 503 + degraded; yoksa 200 + ok.
+    """
+    problems: list[str] = []
+
+    try:
+        data_dir = memory_storage.DATA_DIR
+        probe = data_dir / ".health_probe"
+        data_dir.mkdir(parents=True, exist_ok=True)
+        probe.write_text("probe", encoding="utf-8")
+        probe.unlink()
+    except OSError as exc:
+        problems.append(f"data yazılamıyor: {exc}")
+
+    try:
+        if memory_storage.get_conversation_lock("health_probe") is None:
+            problems.append("get_conversation_lock None döndü")
+    except Exception as exc:  # noqa: BLE001
+        problems.append(f"memory modülü sağlıksız: {exc}")
+
+    if problems:
+        return JSONResponse(
+            status_code=503,
+            content={
+                "status": "degraded",
+                "memory_ready": False,
+                "reason": "; ".join(problems),
+            },
+        )
+    return {"status": "ok", "memory_ready": True}
+
+
+@app.get("/metrics")
+def metrics() -> PlainTextResponse:
+    """Prometheus text formatında in-memory sayaçları döndürür."""
+    return PlainTextResponse(render_metrics(), media_type="text/plain")
 
 
 @app.post("/chat", response_model=ChatResponse)

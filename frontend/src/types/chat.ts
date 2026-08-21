@@ -7,6 +7,7 @@ export type FeedbackValue = 'up' | 'down' | null
 export interface Source {
   document: string
   section: string
+  section_label?: string | null
   snippet?: string
 }
 

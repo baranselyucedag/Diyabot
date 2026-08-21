@@ -22,6 +22,7 @@ from typing import Any
 import portalocker
 
 from src.api.memory.config import MEMORY_CONFIG
+from src.api.memory.metrics import record_event
 from src.api.memory.timeutil import utcnow
 
 LOG_DIR = Path("logs") / "memory"
@@ -77,6 +78,7 @@ def log_event(component: str, event: str, conv_id: str, **kwargs) -> None:
         conv_id: Konuşma kimliği.
         **kwargs: Ek alanlar (note_id, conflict_id, field, vb.).
     """
+    record_event(component, event)
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     _maybe_prune_logs()
 

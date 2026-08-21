@@ -1,9 +1,25 @@
 """Bellek okuma/yazma katmanı — high-level işlemler (storage.py üzerinde).
 
 Async/sync notu:
-  - create_turn_atomic async'tir çünkü conversation-level asyncio.Lock kullanır.
-  - Diğer yükleyiciler (load_memory_context, load_recent_turns_for_prompt, vb.) senkrondur;
-    bunlar disk I/O + portalocker üzerinden çalışır.
+  - create_turn_atomic VE append_turn_and_update_index ASYNC'tir; ikisi de
+    conversation-level asyncio.Lock (get_conversation_lock) altında çalışır.
+    Aynı conv_id için turn ekleyen HERHANGİ bir yol bu kilidi kullanmalı —
+    aksi halde turn_id çakışması / index yarışı geri döner (bkz. aşağıdaki
+    "GÜVENLİK NOTU").
+  - Diğer yükleyiciler (load_memory_context, load_recent_turns_for_prompt, vb.)
+    senkrondur; bunlar disk I/O + portalocker üzerinden çalışır.
+
+GÜVENLİK NOTU (önceki hata, düzeltildi):
+  Daha önce `append_turn_and_update_index` KİLİTSİZ, senkron bir fonksiyon
+  olarak yeniden eklenmişti — tam olarak daha önce bilerek sildiğimiz
+  `_append_turn_and_update_index` ikizinin aynısı. Bu, kullanıcı turu
+  `create_turn_atomic` (kilitli) ile, asistan turu ise bu fonksiyonla
+  (kilitsiz) kaydedilirse, aynı konuşmaya eşzamanlı istek geldiğinde
+  turn_id çakışmasına yol açabiliyordu. Şimdi bu fonksiyon da
+  `create_turn_atomic` ile AYNI kilidi kullanıyor ve turn_id'yi kendisi,
+  kilit İÇİNDE üretiyor — çağıranın önceden hazır bir `Turn` nesnesi (kendi
+  ürettiği turn_id ile) geçmesine artık izin verilmiyor, çünkü turn_id'nin
+  kilit dışında üretilmesi bizzat riskin kendisiydi.
 """
 
 from __future__ import annotations
@@ -99,8 +115,13 @@ def load_memory_context(conv_id: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Turn yönetimi (atomik)
+# Turn yönetimi (atomik) — TEK senkron çekirdek, İKİ async giriş noktası
 # ---------------------------------------------------------------------------
+#
+# Hem create_turn_atomic hem append_turn_and_update_index aynı
+# _create_turn_atomic_sync çekirdeğini, aynı conversation_lock altında
+# çağırır. Böylece iki ayrı "turn kaydetme yolu" olsa bile, ikisi de aynı
+# güvenlik garantisine sahip olur — kod tekrarı da ortadan kalkar.
 
 
 def _create_turn_atomic_sync(
@@ -112,6 +133,10 @@ def _create_turn_atomic_sync(
     """`create_turn_atomic`'in SENKRON çekirdeği (thread pool içinde çalışır).
 
     index oku → turn_id üret → turn ekle → index artır → kaydet.
+
+    ÖNEMLİ: turn_id burada, çekirdek kilit altındayken üretiliyor. Bu
+    fonksiyonu kilit DIŞINDA, doğrudan çağırma — turn_id çakışması riski
+    budur.
     """
     index = load_index(conv_id)
     if index is None:
@@ -156,9 +181,6 @@ async def create_turn_atomic(
     Disk I/O `asyncio.to_thread` ile thread pool'da çalışır; böylece async event
     loop bloke edilmez. Lock async tutulduğu için aynı konuşmanın eşzamanlı
     istekleri hâlâ sıralıdır.
-
-    Not: create_turn_atomic async'tir; diğer prompt yükleme fonksiyonları (load_recent_turns_for_prompt
-    vb.) senkron çalışır. FastAPI endpoint'lerinde asyncio.run/await kullanın.
     """
     lock = get_conversation_lock(conv_id)
     async with lock:
@@ -167,30 +189,29 @@ async def create_turn_atomic(
         )
 
 
-def append_turn_and_update_index(conv_id: str, turn: Turn) -> MemoryIndex:
-    """Turn ekle + index.turn_count++ + save_index (senkron, plan FAZ 2.1).
+async def append_turn_and_update_index(
+    conv_id: str,
+    role: TurnRole | str,
+    content: str,
+    triage: Optional[str] = None,
+) -> Turn:
+    """`create_turn_atomic` ile TAMAMEN AYNI davranış — ikinci bir giriş noktası.
 
-    `create_turn_atomic`'in aksine turn_id'yi kendisi üretmez; çağıranın önceden
-    hazırladığı `Turn`'ü olduğu gibi ekler ve indeksi bir artırır. Pipeline,
-    kullanıcı turunu `create_turn_atomic` ile, asistan turunu ise bu fonksiyonla
-    ekler (plan FAZ 4.1).
+    Pipeline'da kullanıcı turu için `create_turn_atomic`, asistan turu için
+    bu fonksiyon çağrılıyorsa bile, ikisi de aynı `conversation_lock`'u
+    kullanır ve turn_id'yi kilit içinde üretir — hangisi çağrılırsa
+    çağrılsın güvenlik garantisi aynıdır.
+
+    NOT: Önceden hazırlanmış, kendi turn_id'sini taşıyan bir `Turn` nesnesi
+    KABUL ETMİYORUZ — role/content/triage alıyoruz ve turn_id'yi biz,
+    kilit altında üretiyoruz. Kilit dışında üretilmiş bir turn_id'yi kabul
+    etmek, önlemeye çalıştığımız çakışma riskinin ta kendisidir.
+
+    Pratikte `create_turn_atomic` ile birebir aynı işi yaptığı için, yeni
+    kod yazarken doğrudan `create_turn_atomic`'i çağırman ve bu fonksiyonu
+    sadece geriye dönük uyumluluk için tutman önerilir.
     """
-    index = load_index(conv_id)
-    if index is None:
-        index = MemoryIndex(
-            turn_count=0,
-            last_summary_at_turn=0,
-            last_note_extraction_at_turn=0,
-            last_profile_update_at_turn=0,
-            created_at=utcnow(),
-        )
-
-    append_turn(conv_id, turn)
-
-    index.turn_count += 1
-    index.updated_at = utcnow()
-    save_index(conv_id, index)
-    return index
+    return await create_turn_atomic(conv_id, role, content, triage)
 
 
 # ---------------------------------------------------------------------------

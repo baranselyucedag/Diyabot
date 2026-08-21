@@ -16,11 +16,10 @@ from src.api.memory.memory_store import (
     load_recent_turns_for_prompt,
 )
 from src.api.memory.models import Turn
-from src.api.memory.timeutil import utcnow
 from src.api.triage import canned_response, detect_triage_detailed
 from src.retrieval.embed import CHUNKS_DIR, DEFAULT_INDEX_DIR, TOP_K
 from src.retrieval.rerank import retrieve_and_rerank
-from src.retrieval.retrieve import build_content_map
+from src.retrieval.retrieve import build_content_map, build_section_map
 
 logger = logging.getLogger(__name__)
 
@@ -32,14 +31,23 @@ FOLLOW_UPS = [
 ]
 
 
-def _hit_to_source(hit: Any, content_map: dict[str, str]) -> dict[str, str]:
-    """Rerank hit → frontend Source şeması."""
+def _hit_to_source(
+    hit: Any,
+    content_map: dict[str, str],
+    section_map: dict[str, str | None],
+) -> dict[str, Any]:
+    """Rerank hit → frontend Source şeması.
+
+    - `section`: chunk_id (debug/geriye-uyumluluk için KORUNUR; UI'da gösterilmez).
+    - `section_label`: insan-okunur bölüm etiketi (section_path); yoksa None.
+    """
     body = content_map.get(hit.chunk_id, hit.preview or "")
     flat = " ".join(body.split())
     snippet = flat[:220] + ("…" if len(flat) > 220 else "")
     return {
         "document": hit.source or hit.chunk_id,
         "section": hit.chunk_id,
+        "section_label": section_map.get(hit.chunk_id),
         "snippet": snippet,
     }
 
@@ -204,6 +212,7 @@ async def run_chat(
 
     # 5. RAG (mevcut)
     content_map = build_content_map(chunks_dir)
+    section_map = build_section_map(chunks_dir)
     hits = retrieve_and_rerank(
         query=text,
         index_dir=index_dir,
@@ -221,7 +230,7 @@ async def run_chat(
         }
         for h in top
     ]
-    sources = [_hit_to_source(h, content_map) for h in top]
+    sources = [_hit_to_source(h, content_map, section_map) for h in top]
 
     if not contexts:
         return {
@@ -250,16 +259,15 @@ async def run_chat(
                 + "\n\nNot: Anlattığınız durum yakın zamanda hekim değerlendirmesi gerektirebilir."
             )
 
-    # 8. Hafızaya tur ekle (user atomic; assistant append + index artır)
+    # 8. Hafızaya tur ekle — ikisi de aynı conversation_lock altında, atomik.
+    #    turn_id'yi ARTIK elle üretmiyoruz (eski hali kilit dışında tahmin
+    #    ediyordu, eşzamanlı istekte çakışma riski taşıyordu). Her iki
+    #    fonksiyon da (create_turn_atomic / append_turn_and_update_index)
+    #    turn_id'yi kilit İÇİNDE, kendisi üretiyor.
     user_turn = await create_turn_atomic(conversation_id, "user", text, None)
-    assistant_turn = Turn(
-        turn_id=f"msg_{int(user_turn.turn_id.split('_')[1]) + 1}",
-        role="assistant",
-        content=answer,
-        timestamp=utcnow(),
-        triage=triage,
+    assistant_turn = await append_turn_and_update_index(
+        conversation_id, "assistant", answer, triage
     )
-    append_turn_and_update_index(conversation_id, assistant_turn)
 
     # 9. ASYNC: Memory Maintenance Task (fire-and-forget; expiry dahil)
     needs_summary = (memory_ctx["index"].turn_count + 2) % 5 == 0

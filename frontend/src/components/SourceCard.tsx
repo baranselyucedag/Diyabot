@@ -13,7 +13,9 @@ export function SourceCard({ source }: SourceCardProps) {
       </div>
       <div className="source-body">
         <div className="source-doc">{source.document}</div>
-        <div className="source-section">{source.section}</div>
+        {source.section_label ? (
+          <div className="source-section">Bölüm: {source.section_label}</div>
+        ) : null}
         {source.snippet && <div className="source-snippet">{source.snippet}</div>}
       </div>
     </article>

@@ -60,6 +60,22 @@ def build_content_map(
     return {r["chunk_id"]: r["content"] for r in load_chunk_records(chunks_dir)}
 
 
+def build_section_map(
+    chunks_dir: Path = CHUNKS_DIR,
+) -> dict[str, str | None]:
+    """chunk_id → insan-okunur bölüm etiketi (section_path) haritası.
+
+    Kaynak kartı için güvenli etiket üretir: önce `section_path`, yoksa
+    `section`, o da yoksa `None`. Chunk ID bu haritaya ASLA girmez — tam
+    olarak düzeltmeye çalıştığımız sorunu (ham ID'nin kullanıcıya sızması)
+    geri getirmez.
+    """
+    return {
+        r["chunk_id"]: ((r.get("section_path") or r.get("section") or "").strip() or None)
+        for r in load_chunk_records(chunks_dir)
+    }
+
+
 def gpu_free(*objs: Any) -> None:
     """Model/tensor referanslarını düşürüp CUDA önbelleğini temizler (tercih 2A)."""
     for obj in objs:

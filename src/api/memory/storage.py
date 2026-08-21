@@ -31,6 +31,7 @@ from src.api.memory.models import (
     Profile,
     Turn,
 )
+from src.api.memory.encryption import decrypt_bytes, encrypt_bytes
 from src.api.memory.logger import log_event
 
 T = TypeVar("T", bound=BaseModel)
@@ -147,15 +148,18 @@ def write_json_atomic(path: Path, data: BaseModel | dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
     payload = data.model_dump() if isinstance(data, BaseModel) else data
+    raw_bytes = json.dumps(
+        payload, ensure_ascii=False, indent=2, cls=_DateTimeEncoder
+    ).encode("utf-8")
+    final_bytes = encrypt_bytes(raw_bytes)
 
     with tempfile.NamedTemporaryFile(
-        mode="w",
-        encoding="utf-8",
+        mode="wb",
         dir=path.parent,
         delete=False,
         suffix=".tmp",
     ) as tmp:
-        json.dump(payload, tmp, ensure_ascii=False, indent=2, cls=_DateTimeEncoder)
+        tmp.write(final_bytes)
         tmp.flush()
         os.fsync(tmp.fileno())
         tmp_path = Path(tmp.name)
@@ -183,8 +187,8 @@ def read_json(path: Path, model: Type[T], repair_fn=None) -> Optional[T]:
         with portalocker.Lock(
             _lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH | portalocker.LOCK_NB
         ):
-            with open(path, "r", encoding="utf-8") as f:
-                raw = json.load(f)
+            with open(path, "rb") as f:
+                raw = json.loads(decrypt_bytes(f.read()).decode("utf-8"))
         try:
             return model.model_validate(raw)
         except ValueError:
@@ -219,12 +223,18 @@ def _repair_notes_store(raw: dict) -> dict:
 
 
 def append_jsonl(path: Path, record: BaseModel) -> None:
-    """Bir Pydantic modelini JSONL dosyasına tek satır olarak ekler (append-only)."""
+    """Bir Pydantic modelini JSONL dosyasına tek satır olarak ekler (append-only).
+
+    Satır ayracı (``\\n``) şifrelemenin DIŞINDADIR: her satır tek bir token/JSON
+    olur ve dosya fiziksel olarak ``\\n`` ile bölünür. ``load_turns`` satırları
+    bu ayraçtan böler — ayraç şifreli yükün İÇİNDE olsaydı art arda eklenen
+    token'lar tek satırda birleşir ve okuma yalnızca İLK turu geri verirdi.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    line = record.model_dump_json() + "\n"
+    line = encrypt_bytes(record.model_dump_json().encode("utf-8")) + b"\n"
 
     with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_EX | portalocker.LOCK_NB):
-        with open(path, "a", encoding="utf-8") as f:
+        with open(path, "ab") as f:
             f.write(line)
 
 
@@ -334,13 +344,14 @@ def load_turns(conv_id: str, limit: Optional[int] = None) -> list[Turn]:
 
     turns: list[Turn] = []
     with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH | portalocker.LOCK_NB):
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, "rb") as f:
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
                 try:
-                    turns.append(Turn.model_validate_json(line))
+                    raw = decrypt_bytes(line).decode("utf-8")
+                    turns.append(Turn.model_validate_json(raw))
                 except Exception as exc:  # bozuk tek satır tüm okumayı düşürmesin
                     _log_warning(f"skipping_corrupt_turn_line conv_id={conv_id} error={exc}")
 
@@ -365,13 +376,12 @@ def save_summary(conv_id: str, summary: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.NamedTemporaryFile(
-        mode="w",
-        encoding="utf-8",
+        mode="wb",
         dir=path.parent,
         delete=False,
         suffix=".tmp",
     ) as tmp:
-        tmp.write(summary)
+        tmp.write(encrypt_bytes(summary.encode("utf-8")))
         tmp.flush()
         os.fsync(tmp.fileno())
         tmp_path = Path(tmp.name)
@@ -392,8 +402,8 @@ def load_summary(conv_id: str) -> Optional[str]:
 
     try:
         with portalocker.Lock(_lock_path_for(path), timeout=10, flags=portalocker.LOCK_SH | portalocker.LOCK_NB):
-            with open(path, "r", encoding="utf-8") as f:
-                return f.read().strip()
+            with open(path, "rb") as f:
+                return decrypt_bytes(f.read()).decode("utf-8").strip()
     except OSError as exc:
         _log_warning(f"read_summary_failed conv_id={conv_id} error={exc}")
         return None

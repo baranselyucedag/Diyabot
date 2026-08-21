@@ -22,4 +22,7 @@ ragas>=0.3
 # Caching
 portalocker>=2.8
 
+# At-rest şifreleme (Faz 5.1 — Fernet)
+cryptography>=42.0
+
 # Not: NVIDIA_API_KEY ve OPENAI_API_KEY → frontend/.env (VITE_ öneki olmadan).
