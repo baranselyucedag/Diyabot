@@ -33,7 +33,6 @@ scripts/
 docs/
 data/raw/
 data/eval_results/
-tests/
 
 # Big data
 train-00000-of-00001.parquet        

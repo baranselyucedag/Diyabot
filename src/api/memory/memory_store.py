@@ -167,6 +167,32 @@ async def create_turn_atomic(
         )
 
 
+def append_turn_and_update_index(conv_id: str, turn: Turn) -> MemoryIndex:
+    """Turn ekle + index.turn_count++ + save_index (senkron, plan FAZ 2.1).
+
+    `create_turn_atomic`'in aksine turn_id'yi kendisi üretmez; çağıranın önceden
+    hazırladığı `Turn`'ü olduğu gibi ekler ve indeksi bir artırır. Pipeline,
+    kullanıcı turunu `create_turn_atomic` ile, asistan turunu ise bu fonksiyonla
+    ekler (plan FAZ 4.1).
+    """
+    index = load_index(conv_id)
+    if index is None:
+        index = MemoryIndex(
+            turn_count=0,
+            last_summary_at_turn=0,
+            last_note_extraction_at_turn=0,
+            last_profile_update_at_turn=0,
+            created_at=utcnow(),
+        )
+
+    append_turn(conv_id, turn)
+
+    index.turn_count += 1
+    index.updated_at = utcnow()
+    save_index(conv_id, index)
+    return index
+
+
 # ---------------------------------------------------------------------------
 # Not yönetimi
 # ---------------------------------------------------------------------------

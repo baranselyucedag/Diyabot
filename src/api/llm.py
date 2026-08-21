@@ -125,18 +125,25 @@ def generate_answer(
     question: str,
     contexts: list[dict[str, Any]],
     *,
+    user_prompt: str | None = None,
     model: str = DEFAULT_MODEL,
     base_url: str = DEFAULT_BASE_URL,
     max_tokens: int = 1024,
     temperature: float = 0.2,
 ) -> str:
-    """NVIDIA Nemotron ile RAG cevabı üretir (thinking kapalı)."""
+    """NVIDIA Nemotron ile RAG cevabı üretir (thinking kapalı).
+
+    `user_prompt` verilirse (memory entegrasyonu), `build_user_prompt` çağrılmadan
+    doğrudan kullanıcı mesajı olarak kullanılır. SYSTEM_PROMPT her zaman ayrı
+    system mesajı olarak kalır — kullanıcı mesajına gömülmez (çift sarmalama yok).
+    """
     from openai import OpenAI
 
     client = OpenAI(base_url=base_url, api_key=get_api_key())
+    user_msg = user_prompt if user_prompt is not None else build_user_prompt(question, contexts)
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": build_user_prompt(question, contexts)},
+        {"role": "user", "content": user_msg},
     ]
     # Nemotron reasoning çıktısını hasta cevabına karıştırmamak için thinking kapalı
     resp = client.chat.completions.create(

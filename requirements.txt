@@ -19,4 +19,7 @@ python-dotenv>=1.0
 # answer_relevancy yok (embedding ister).
 ragas>=0.3
 
+# Caching
+portalocker>=2.8
+
 # Not: NVIDIA_API_KEY ve OPENAI_API_KEY → frontend/.env (VITE_ öneki olmadan).

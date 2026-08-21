@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import uuid
 from typing import Any, Literal, Optional
 
 from fastapi import FastAPI, HTTPException
@@ -50,6 +51,7 @@ app.add_middleware(
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1)
     conversation_id: Optional[str] = None
+    history: list[dict] = Field(default_factory=list)
 
 
 class SourceOut(BaseModel):
@@ -73,10 +75,11 @@ def health() -> dict[str, str]:
 
 
 @app.post("/chat", response_model=ChatResponse)
-def chat(req: ChatRequest) -> dict[str, Any]:
+async def chat(req: ChatRequest) -> dict[str, Any]:
     """Frontend'in beklediği chat endpoint'i."""
+    conversation_id = req.conversation_id or f"conv_{uuid.uuid4().hex[:12]}"
     try:
-        return run_chat(req.message)
+        return await run_chat(req.message, conversation_id, req.history)
     except FileNotFoundError as exc:
         raise HTTPException(
             status_code=503,

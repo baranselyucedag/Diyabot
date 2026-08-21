@@ -13,8 +13,11 @@ otomatik temizlenir (rotation/retention).
 from __future__ import annotations
 
 import json
+import logging
+import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Any
 
 import portalocker
 
@@ -25,6 +28,15 @@ LOG_DIR = Path("logs") / "memory"
 
 # Günde bir kez retention temizliği yapılır; hangi gün yapıldığını takip ederiz.
 _last_prune_day: str | None = None
+
+# structlog opsiyonel — yoksa stdlib logging'e düşer.
+try:
+    import structlog
+
+    _STRUCTLOG_AVAILABLE = True
+except ImportError:
+    structlog = None  # type: ignore[assignment]
+    _STRUCTLOG_AVAILABLE = False
 
 
 def _maybe_prune_logs() -> None:
@@ -92,3 +104,39 @@ def log_event(component: str, event: str, conv_id: str, **kwargs) -> None:
                 f.write(json.dumps(record, ensure_ascii=False) + "\n")
     except (portalocker.exceptions.AlreadyLocked, OSError):
         pass  # log best-effort'tur; kilit/disk hatası ana akışı bozmamalı
+
+
+def get_logger(name: str = "memory") -> Any:
+    """Structlog logger döndürür; structlog yoksa stdlib logging'e düşer.
+
+    Structlog varsa: JSON renderer + timestamp + level + caller info.
+    Yoksa: stdlib logging.Logger (basicConfig uygulanmamışsa no-op).
+    """
+    if _STRUCTLOG_AVAILABLE and structlog is not None:
+        # structlog configure edilmemişse basit yapılandırma
+        if not structlog.is_configured():
+            structlog.configure(
+                processors=[
+                    structlog.processors.add_log_level,
+                    structlog.processors.TimeStamper(fmt="iso", utc=True),
+                    structlog.processors.StackInfoRenderer(),
+                    structlog.processors.format_exc_info,
+                    structlog.processors.JSONRenderer(),
+                ],
+                wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
+                context_class=dict,
+                logger_factory=structlog.PrintLoggerFactory(file=sys.stdout),
+                cache_logger_on_first_use=True,
+            )
+        return structlog.get_logger(name)
+
+    # Fallback: stdlib logging
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(
+            logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
+        )
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    return logger

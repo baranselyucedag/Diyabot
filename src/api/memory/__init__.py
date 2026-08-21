@@ -41,6 +41,7 @@ from .storage import (
 from .memory_store import (
     load_memory_context,
     create_turn_atomic,
+    append_turn_and_update_index,
     save_notes_with_limit,
     update_note_staleness,
     load_recent_turns_for_prompt,
@@ -132,6 +133,7 @@ __all__ = [
     "validate_conv_id",
     "load_memory_context",
     "create_turn_atomic",
+    "append_turn_and_update_index",
     "save_notes_with_limit",
     "update_note_staleness",
     "load_recent_turns_for_prompt",

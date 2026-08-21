@@ -152,10 +152,16 @@ export default function App() {
     })
 
     try {
-      const { response } = await sendChatMessage({
-        message: text,
-        conversation_id: conversationId,
-      })
+      const { response } = await sendChatMessage(
+        { message: text, conversation_id: conversationId },
+        active.messages.slice(-6).map((m) => ({
+          turn_id: m.id,
+          role: m.role,
+          content: m.content,
+          timestamp: m.createdAt,
+          triage: m.triageLevel,
+        })),
+      )
 
       const assistantMessage: ChatMessage = {
         id: createId('msg'),

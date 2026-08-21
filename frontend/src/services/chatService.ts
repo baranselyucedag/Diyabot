@@ -1,5 +1,13 @@
 import type { ChatRequest, ChatResponse, SendMessageResult, TriageLevel } from '../types/chat'
 
+export type ChatHistoryItem = {
+  turn_id: string
+  role: string
+  content: string
+  timestamp: string
+  triage?: string
+}
+
 const DEFAULT_DISCLAIMER =
   'Bu bilgi genel eğitim amaçlıdır; tanı veya tedavi önerisi değildir. Kişisel kararlar için hekiminize danışın.'
 
@@ -219,11 +227,11 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-async function callRealApi(request: ChatRequest, baseUrl: string): Promise<ChatResponse> {
+async function callRealApi(request: ChatRequest, baseUrl: string, history: ChatHistoryItem[]): Promise<ChatResponse> {
   const response = await fetch(`${baseUrl.replace(/\/$/, '')}/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(request),
+    body: JSON.stringify({ ...request, history }),
   })
 
   if (!response.ok) {
@@ -240,11 +248,14 @@ async function callRealApi(request: ChatRequest, baseUrl: string): Promise<ChatR
   }
 }
 
-export async function sendChatMessage(request: ChatRequest): Promise<SendMessageResult> {
+export async function sendChatMessage(
+  request: ChatRequest,
+  history: ChatHistoryItem[] = [],
+): Promise<SendMessageResult> {
   const apiUrl = import.meta.env.VITE_API_URL as string | undefined
 
   if (apiUrl && apiUrl.trim().length > 0) {
-    const response = await callRealApi(request, apiUrl.trim())
+    const response = await callRealApi(request, apiUrl.trim(), history)
     return { response, usedMock: false }
   }
 
