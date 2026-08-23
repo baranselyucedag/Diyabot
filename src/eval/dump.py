@@ -11,7 +11,8 @@ from metrics import KS, mean_metrics
 from stats import bootstrap_ci, compare_systems
 
 ROOT = Path(__file__).resolve().parents[2]
-RESULTS_DIR = ROOT / "data" / "eval_results"
+# Eval çıktıları (raporlar/skorlar) girdi verisinden (data/) ayrı tutulur.
+RESULTS_DIR = ROOT / "eval_results"
 
 
 def new_run_dir(name: str) -> Path:

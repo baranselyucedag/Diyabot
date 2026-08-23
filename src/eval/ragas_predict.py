@@ -15,18 +15,17 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
-
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.api.env import load_project_env
-from src.api.llm import generate_answer
-from src.api.pipeline import LLM_TOP_N
-from src.api.triage import canned_response, detect_triage_detailed
-from src.retrieval.embed import (
+from src.api.env import load_project_env  # noqa: E402
+from src.api.llm import generate_answer  # noqa: E402
+from src.api.pipeline import LLM_TOP_N  # noqa: E402
+from src.api.triage import canned_response, detect_triage_detailed  # noqa: E402
+from src.retrieval.embed import (  # noqa: E402
     CHUNKS_DIR,
     DEFAULT_INDEX_DIR,
     TOP_K,
@@ -34,7 +33,7 @@ from src.retrieval.embed import (
     load_embedder,
     load_index,
 )
-from src.retrieval.rerank import (
+from src.retrieval.rerank import (  # noqa: E402
     MAX_DOC_CHARS,
     PREVIEW_CHARS,
     RERANK_BATCH,
@@ -42,7 +41,7 @@ from src.retrieval.rerank import (
     RerankHit,
     load_reranker,
 )
-from src.retrieval.retrieve import (
+from src.retrieval.retrieve import (  # noqa: E402
     RetrievalHit,
     build_content_map,
     preview_text,
@@ -162,7 +161,7 @@ def warm_retrieve_and_rerank(
     return out
 
 
-def predict_one(
+def retrieve_step(
     gold_row: dict[str, Any],
     *,
     embeddings: np.ndarray,
@@ -172,11 +171,15 @@ def predict_one(
     reranker: Any,
     llm_top_n: int = LLM_TOP_N,
     retrieve_k: int = TOP_K,
-) -> dict[str, Any]:
-    """Tek gold sorusu için üretimle aynı cevabı üretir ve Ragas satırı döner.
+) -> tuple[dict[str, Any], list[dict[str, Any]], list[str]]:
+    """Tek gold sorusu için triage + retrieve→rerank yapar; (base, contexts, ranked_ids) döner.
 
-    EMERGENCY/RED'de canned şablon kullanılır (retrieval atlanır). Diğerlerinde
-    top-3 context Nemotron'a gider; ranked_chunk_ids top-10 olarak saklanır.
+    Üretimle aynı yolun retrieval yarısı. EMERGENCY/RED'de canned şablon kullanılır
+    (retrieval atlanır) ve dönen contexts/ranked_ids boş olur; base'e guardrail
+    alanları (answer, skipped_rag=True) yazılır. Diğerlerinde top-llm_top_n context
+    üretilir, ranked_chunk_ids top-k olarak saklanır.
+
+    LLM çağrısı YOKTUR — generate_step bu çıktıyı tüketir (paralel çalışabilir).
     """
     question = (gold_row.get("question") or "").strip()
     expected_triage = str(gold_row.get("expected_triage") or "GREEN")
@@ -214,7 +217,7 @@ def predict_one(
                 "skipped_rag": True,
             }
         )
-        return base
+        return base, [], []
 
     hits = warm_retrieve_and_rerank(
         question,
@@ -236,6 +239,19 @@ def predict_one(
         }
         for h in top
     ]
+    return base, contexts, ranked_ids
+
+
+def generate_step(
+    base: dict[str, Any],
+    contexts: list[dict[str, Any]],
+    ranked_ids: list[str],
+) -> dict[str, Any]:
+    """retrieve_step çıktısını alıp Nemotron cevabını üretir; tam satır döner.
+
+    Retrieval'dan bağımsızdır (yalnızca LLM I/O) — bu yüzden worker havuzunda
+    paralel çalışabilir. YELLOW'da cevapta "hekim" geçmiyorsa uyarı eklenir.
+    """
     context_texts = [
         (c.get("content") or c.get("preview") or "") for c in contexts
     ]
@@ -246,23 +262,21 @@ def predict_one(
             "Kişisel kararlar için hekiminize danışın."
         )
     else:
-        answer = generate_answer(question, contexts)
+        answer = generate_answer(base["question"], contexts)
 
-    if detected == "YELLOW" and "hekim" not in answer.casefold():
+    if base.get("detected_triage") == "YELLOW" and "hekim" not in answer.casefold():
         answer = (
             answer
             + "\n\nNot: Anlattığınız durum yakın zamanda hekim değerlendirmesi gerektirebilir."
         )
 
-    base.update(
-        {
-            "answer": answer,
-            "retrieved_contexts": context_texts,
-            "ranked_chunk_ids": ranked_ids,
-            "skipped_rag": False,
-        }
-    )
-    return base
+    return {
+        **base,
+        "answer": answer,
+        "retrieved_contexts": context_texts,
+        "ranked_chunk_ids": ranked_ids,
+        "skipped_rag": False,
+    }
 
 
 def write_predictions(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -316,95 +330,27 @@ def run_predict(
     t0 = time.perf_counter()
 
     for i, g in enumerate(gold, start=1):
-        question = (g.get("question") or "").strip()
-        decision = detect_triage_detailed(question)
-        detected = decision.level
-        canned = canned_response(
-            detected,
-            flags=decision.flags,
-            tempered=decision.tempered,
-            reason=decision.reason if decision.tempered else None,
-        )
-        expected_triage = str(g.get("expected_triage") or "GREEN")
-
-        base: dict[str, Any] = {
-            "gold_id": g.get("id"),
-            "question": question,
-            "reference": g.get("expected_answer_summary") or "",
-            "expected_chunk_ids": list(g.get("expected_chunk_ids") or []),
-            "expected_triage": expected_triage,
-            "detected_triage": detected,
-            "must_include": list(g.get("must_include") or []),
-            "must_not_include": list(g.get("must_not_include") or []),
-            "category": g.get("category"),
-            "paraphrase_of": g.get("paraphrase_of"),
-            "safety_critical": bool(g.get("safety_critical")),
-            "is_guardrail": expected_triage in GUARDRAIL_TRIAGES
-            or detected in {"RED", "REFUSE", "EMERGENCY"},
-        }
-
-        if canned is not None:
-            base.update(
-                {
-                    "answer": canned,
-                    "retrieved_contexts": [],
-                    "ranked_chunk_ids": [],
-                    "skipped_rag": True,
-                }
-            )
-            done_rows.append(base)
-            print(f"  [{i}/{len(gold)}] {g.get('id')} guardrail={detected}")
-            continue
-
-        hits = warm_retrieve_and_rerank(
-            question,
+        base, contexts, ranked_ids = retrieve_step(
+            g,
             embeddings=embeddings,
             meta=meta,
             content_map=content_map,
             embedder=embedder,
             reranker=reranker,
-            top_k=TOP_K,
         )
-        ranked_ids = [h.chunk_id for h in hits]
-        top = hits[: max(1, LLM_TOP_N)]
-        contexts = [
-            {
-                "chunk_id": h.chunk_id,
-                "source": h.source,
-                "preview": h.preview,
-                "content": content_map.get(h.chunk_id, h.preview),
-            }
-            for h in top
-        ]
+        if base.get("skipped_rag"):
+            done_rows.append(base)
+            print(f"  [{i}/{len(gold)}] {g.get('id')} guardrail={base['detected_triage']}")
+            continue
         pending_llm.append((base, contexts, ranked_ids))
         print(f"  [{i}/{len(gold)}] {g.get('id')} retrieve OK → LLM kuyruğu")
 
-    def _gen(item: tuple[dict[str, Any], list[dict[str, Any]], list[str]]) -> dict[str, Any]:
-        base, contexts, ranked_ids = item
-        context_texts = [(c.get("content") or c.get("preview") or "") for c in contexts]
-        if not contexts:
-            answer = (
-                "Bu konuda doğrulanmış eğitim kaynağımda net bir eşleşme bulamadım. "
-                "Kişisel kararlar için hekiminize danışın."
-            )
-        else:
-            answer = generate_answer(base["question"], contexts)
-        if base["detected_triage"] == "YELLOW" and "hekim" not in answer.casefold():
-            answer += (
-                "\n\nNot: Anlattığınız durum yakın zamanda hekim değerlendirmesi gerektirebilir."
-            )
-        out = {
-            **base,
-            "answer": answer,
-            "retrieved_contexts": context_texts,
-            "ranked_chunk_ids": ranked_ids,
-            "skipped_rag": False,
-        }
-        return out
-
     print(f"\nLLM üretimi başlıyor ({len(pending_llm)} soru, workers={workers})...")
     with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
-        futures = {pool.submit(_gen, item): item[0].get("gold_id") for item in pending_llm}
+        futures = {
+            pool.submit(generate_step, base, contexts, ranked_ids): base.get("gold_id")
+            for base, contexts, ranked_ids in pending_llm
+        }
         for fut in as_completed(futures):
             gid = futures[fut]
             try:
@@ -478,7 +424,7 @@ def main() -> None:
         "--out",
         type=Path,
         default=None,
-        help="Çıktı klasörü (verilmezse data/eval_results/ragas_<stamp>).",
+        help="Çıktı klasörü (verilmezse eval_results/ragas_<stamp>).",
     )
     args = parser.parse_args()
     run_predict(

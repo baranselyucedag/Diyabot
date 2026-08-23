@@ -32,8 +32,8 @@ Thumbs.db
 scripts/
 docs/
 data/raw/
-data/eval_results/
 data/memory/
+eval_results/
 logs/
 
 # Big data
