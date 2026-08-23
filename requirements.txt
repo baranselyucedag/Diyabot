@@ -19,6 +19,16 @@ python-dotenv>=1.0
 # answer_relevancy yok (embedding ister).
 ragas>=0.3
 
+# RAGChecker (bağımsız eval katmanı) — ragas_predict/ragas_score'dan BAĞIMSIZ çalışır.
+# BU PAKET ANA ENV'E KURULMAZ: ragchecker -> refchecker -> litellm zinciri
+# httpx>=0.28 + transformers<5 ister; bu, yukarıdaki "httpx<0.28" piniyle ve
+# retrieval'in transformers 5.x'iyle ÇELİŞİR. Ayrı venv'de kurulur:
+#   python -m venv --system-site-packages .venv-ragchecker
+#   .venv-ragchecker/Scripts/python.exe -m pip install ragchecker
+#   .venv-ragchecker/Scripts/python.exe -m spacy download en_core_web_sm
+# Çalıştırma (main ortama DOKUNMAZ):
+#   .venv-ragchecker/Scripts/python.exe src/eval/ragchecker_run.py --predictions <path>
+
 # Caching
 portalocker>=2.8
 

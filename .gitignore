@@ -35,6 +35,8 @@ data/raw/
 data/memory/
 eval_results/
 logs/
+.venv-ragchecker/
+.pytest_cache/
 
 # Big data
 train-00000-of-00001.parquet        
