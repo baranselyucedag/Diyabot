@@ -195,7 +195,7 @@ def retrieve_step(
     base: dict[str, Any] = {
         "gold_id": gold_row.get("id"),
         "question": question,
-        "reference": gold_row.get("expected_answer_summary") or "",
+        "reference": gold_row.get("expected_answer") or gold_row.get("expected_answer_summary") or "",
         "expected_chunk_ids": list(gold_row.get("expected_chunk_ids") or []),
         "expected_triage": expected_triage,
         "detected_triage": detected,

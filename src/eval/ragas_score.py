@@ -3,7 +3,7 @@
 
 ROL AYIRIMI:
   - Yanıt üreten chat LLM = Nemotron (src/api/llm.py) — bu dosya ona DOKUNMAZ.
-  - Hakem (judge) LLM     = DeepSeek V4 Pro (DeepSeek API) — yalnızca skorlama için.
+  - Hakem (judge) LLM     = Meta Llama 3.3 70B (NVIDIA NIM) — yalnızca skorlama için.
 
 Embedding gerektiren metrikler (answer_relevancy) local bge-m3 ile çalışır —
 OpenAI embedding API'sine gidilmez (sıfır ek maliyet).
@@ -58,8 +58,9 @@ warnings.filterwarnings(
 )
 
 # Sabit hakem — chat Nemotron'dan ayrı model (self-judge yok).
-# OpenAI GPT judge: Türkçe'de DeepSeek'e göre daha tutarlı skorlar.
-JUDGE_MODEL = "gpt-4o-mini"
+# Judge = Meta Llama 3.3 70B (NVIDIA NIM): chat Nemotron-550b ile farklı aile,
+# reasoning yok (temiz skor), NVIDIA key ile bedava (maliyet optimizasyonu).
+JUDGE_MODEL = "meta/llama-3.3-70b-instruct"
 
 
 def load_predictions(path: Path) -> list[dict[str, Any]]:
@@ -81,11 +82,11 @@ _JUDGE_CONFIG_CACHE: dict[str, str] | None = None
 
 
 def resolve_judge_config() -> dict[str, str]:
-    """GPT hakem ayarını döner; API key OPENAI_API_KEY'den alınır.
+    """Judge (hakem) ayarını döner; NVIDIA NIM üzerinden Llama 3.3 70B kullanılır.
 
-    Chat/Nemotron (NVIDIA) ile tamamen ayrı: farklı sağlayıcı, farklı key.
-    Key, frontend/.env içindeki OPENAI_API_KEY satırından okunur. base_url
-    OPENAI_BASE_URL'den gelir; yoksa resmi OpenAI ucu varsayılır.
+    Chat Nemotron (nvidia/nemotron-3-ultra-550b) ile AYNI sağlayıcı (NVIDIA)
+    ama FARKLI model ailesi (Meta Llama) → self-judge yok. Key NVIDIA_API_KEY'den
+    alınır; base_url sabit NVIDIA NIM ucu (maliyet: NVIDIA hesabı, free tier).
 
     Sonuç süreç boyunca bir kez çözülür (cache) — build_judge_llm() ve
     run_score() aynı dict'i paylaşır; env/key tekrar tekrar okunmaz.
@@ -96,29 +97,30 @@ def resolve_judge_config() -> dict[str, str]:
 
     load_project_env()
 
-    api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
+    api_key = (os.getenv("NVIDIA_API_KEY") or "").strip()
     if not api_key:
         raise RuntimeError(
-            "OPENAI_API_KEY yok. frontend/.env içine yazın "
-            "(yalnızca Ragas judge için; chat Nemotron NVIDIA key kullanır)."
+            "NVIDIA_API_KEY yok. frontend/.env içine yazın "
+            "(judge = Llama 3.3 70B, NVIDIA NIM üzerinden; chat ile aynı key)."
         )
-    base_url = (os.getenv("OPENAI_BASE_URL") or "").strip() or "https://api.openai.com/v1"
+    base_url = "https://integrate.api.nvidia.com/v1"
     _JUDGE_CONFIG_CACHE = {"model": JUDGE_MODEL, "api_key": api_key, "base_url": base_url}
     return _JUDGE_CONFIG_CACHE
 
 
 def build_judge_llm():
-    """Yalnızca Ragas skorlaması için GPT hakem (llm_factory) üretir.
+    """Yalnızca Ragas skorlaması için Llama 3.3 70B hakem (llm_factory) üretir.
 
-    Nemotron (yanıt LLM, NVIDIA) burada hiç kullanılmaz. max_tokens=16384:
-    Ragas metrikleri uzun JSON üretir; varsayılan 1024 IncompleteOutput
-    hatasına yol açar (faithfulness statement/NLI çıktıları kesilir).
+    Chat (yanıt LLM) = Nemotron-550b; judge = Meta Llama-70b — farklı aileler,
+    self-judge yok. Llama reasoning modeli DEĞİL, bu yüzden thinking kapatma
+    (chat_template_kwargs) gerekmez. max_tokens=16384: Ragas metrikleri uzun
+    JSON üretir; varsayılan 1024 IncompleteOutput hatasına yol açar.
     """
 
     cfg = resolve_judge_config()
     client = OpenAI(api_key=cfg["api_key"], base_url=cfg["base_url"])
     print(
-        f"Hakem LLM (GPT, chat değil): {cfg['model']} "
+        f"Hakem LLM (Llama, chat Nemotron'dan ayrı): {cfg['model']} "
         f"(base_url={cfg['base_url']}, max_tokens=16384)"
     )
     return llm_factory(
@@ -552,10 +554,10 @@ def write_summary_md(
     )
     lines.append(
         "- **factual_correctness** ve **context_entity_recall**: judge LLM'in "
-        "(gpt-4o-mini) Türkçe claim/entity çıkarma zayıflığı nedeniyle "
-        "**güvenilirliği sınırlıdır**; referans alanı kısa özet olduğundan ek "
-        "yanlılık içerir. Ana metrikler olarak faithfulness, context_precision "
-        "ve context_recall esas alınmalıdır."
+        "(Llama 3.3 70B) Türkçe claim/entity çıkarma zayıflığı nedeniyle "
+        "**güvenilirliği sınırlıdır**. Referans alanı artık tam referans cevaptır "
+        "(`expected_answer`), kısa özet değil. Ana metrikler olarak faithfulness, "
+        "context_precision ve context_recall esas alınmalıdır."
     )
     lines.append("")
 

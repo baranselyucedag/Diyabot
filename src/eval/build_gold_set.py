@@ -263,6 +263,7 @@ def build_records(cases: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "must_not_include": row.get("must_not_include") or [],
             "retrieval_keywords": row.get("keywords") or [],
             "expected_answer_summary": row.get("summary") or "",
+            "expected_answer": row.get("expected_answer") or "",
             "expected_chunk_ids": expected,
             "coverage_status": coverage,
             "curator_verified": not is_refusal and bool(expected),
