@@ -33,6 +33,7 @@ scripts/
 docs/
 data/raw/
 data/memory/
+data/profiles
 eval_results/
 logs/
 .venv-ragchecker/

@@ -1,6 +1,5 @@
 import {
   FileText,
-  MessageCircle,
   Pencil,
   Plus,
   Search,
@@ -53,7 +52,7 @@ export function Sidebar({
     <aside className={`sidebar${open ? ' open' : ''}`} aria-label="Sohbet geçmişi">
       <div className="sidebar-brand">
         <div className="brand-mark" aria-hidden>
-          <MessageCircle size={18} strokeWidth={2.4} />
+          <img src="/logo.png" alt="Diyabot" className="brand-logo" />
         </div>
         <div className="brand-text">
           <span className="brand-title">DiyabetAsistan</span>
