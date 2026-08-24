@@ -24,9 +24,9 @@ Not: `minimaxai/minimax-m3` free tier'da rate limit'e takılır (429); istersen
 `REFERENCE_MODEL=minimaxai/minimax-m3` ile deneyebilirsin.
 
 Örnek:
-  python -m src.eval.build_reference_answers --limit 3
-  python -m src.eval.build_reference_answers --all
-  python -m src.eval.build_reference_answers --all --write-cases
+  python -m src.eval.goldset.build_reference_answers --limit 3
+  python -m src.eval.goldset.build_reference_answers --all
+  python -m src.eval.goldset.build_reference_answers --all --write-cases
 """
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 

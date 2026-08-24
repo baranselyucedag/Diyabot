@@ -23,9 +23,9 @@ Küratörlü değerlendirme seti. **Tek yazım kaynağı:** [`authoring/cases.js
 ## Üretim / doğrulama
 
 ```bash
-python -m src.eval.corpus_inventory
-python -m src.eval.build_gold_set --validate --report-only
-python -m src.eval.build_gold_set --validate
+python -m src.eval.goldset.corpus_inventory
+python -m src.eval.goldset.build_gold_set --validate --report-only
+python -m src.eval.goldset.build_gold_set --validate
 ```
 
 > `expected_chunk_ids` **Küratör onaylıdır** (elle seçilir). Leksik otomatik aday yok.

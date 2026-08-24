@@ -14,7 +14,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 PROCESSED = ROOT / "data" / "processed"
 AUTHORING_DIR = ROOT / "data" / "gold" / "authoring"
 CASES_PATH = AUTHORING_DIR / "cases.jsonl"

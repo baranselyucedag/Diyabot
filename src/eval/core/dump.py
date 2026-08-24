@@ -7,10 +7,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from metrics import KS, mean_metrics
-from stats import bootstrap_ci, compare_systems
+from src.eval.core.metrics import KS, mean_metrics
+from src.eval.core.stats import bootstrap_ci, compare_systems
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 # Eval çıktıları (raporlar/skorlar) girdi verisinden (data/) ayrı tutulur.
 RESULTS_DIR = ROOT / "eval_results"
 
@@ -92,7 +92,7 @@ def write_summary(
         if pq:
             questions = [q.get("question") for q in pq]
             paras = [q.get("paraphrase_of") for q in pq]
-            from stats import _cluster_ids
+            from src.eval.core.stats import _cluster_ids
 
             clusters = _cluster_ids(len(pq), paras, questions)
             hit_ci = bootstrap_ci(
@@ -207,7 +207,7 @@ def write_summary(
 
 def attach_ci_to_row(row: dict, per_query: list[dict], n_boot: int = 10_000) -> dict:
     """Ortalama satırına CI alanları ekle (terminal tablosu için)."""
-    from stats import _cluster_ids
+    from src.eval.core.stats import _cluster_ids
 
     questions = [q.get("question") for q in per_query]
     paras = [q.get("paraphrase_of") for q in per_query]

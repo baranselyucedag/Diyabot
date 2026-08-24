@@ -44,8 +44,14 @@ T = TypeVar("T", bound=BaseModel)
 # sırasında `path.parent.mkdir(parents=True, exist_ok=True)` ile tembel olarak
 # oluşturulur. Böylece testler `monkeypatch` ile bu globalleri tmp dizine
 # çevirebilir ve çalışma dizininde istenmeyen data/ ve logs/ klasörleri açılmaz.
+#
+# Dizinler CWD'ye DEĞİL proje köküne sabitlenir (uygulama nereden çalıştırılırsa
+# çalıştırılsın aynı yer kullanılır). CHATBOT_DATA_DIR env değişkeniyle override
+# edilebilir; testler yine module-global `monkeypatch.setattr` ile değiştirir.
 
-DATA_DIR = Path("data")
+_PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+DATA_DIR = Path(os.environ.get("CHATBOT_DATA_DIR") or (_PROJECT_ROOT / "data"))
 PROFILES_DIR = DATA_DIR / "profiles"
 MEMORY_DIR = DATA_DIR / "memory"
 

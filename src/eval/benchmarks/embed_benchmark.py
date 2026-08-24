@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 from dataclasses import dataclass
@@ -13,21 +14,16 @@ from typing import Any, Callable
 import numpy as np
 from tqdm import tqdm
 
-_EVAL_DIR = Path(__file__).resolve().parent
-if str(_EVAL_DIR) not in sys.path:
-    sys.path.insert(0, str(_EVAL_DIR))
+ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-from dump import attach_ci_to_row, new_run_dir, write_per_query, write_summary  # noqa: E402
-from metrics import KS, mean_metrics, per_query_metrics  # noqa: E402
+from src.eval.core.dump import attach_ci_to_row, new_run_dir, write_per_query, write_summary  # noqa: E402
+from src.eval.core.metrics import KS, mean_metrics, per_query_metrics  # noqa: E402
+from src.api.env import load_project_env  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[2]
 CHUNKS_DIR = ROOT / "data" / "processed"
 GOLD_PATH = ROOT / "data" / "gold" / "gold_set.jsonl"
-
-# !!! geçici — iş bitince sil / rotate et
-OPENAI_API_KEY = (
-    "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"
-)
 
 TURKISH_E5_TASK = (
     "Given a Turkish search query, retrieve relevant passages written in "
@@ -115,8 +111,12 @@ class OpenAIEncoder:
     def __init__(self, model_id: str):
         from openai import OpenAI
 
+        load_project_env()
+        api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
+        if not api_key:
+            raise RuntimeError("OPENAI_API_KEY yok. frontend/.env içine yazın.")
         self.model_id = model_id
-        self.client = OpenAI(api_key=OPENAI_API_KEY)
+        self.client = OpenAI(api_key=api_key)
 
     def encode(self, texts: list[str], batch_size: int = 64) -> np.ndarray:
         out: list[list[float]] = []
@@ -217,7 +217,7 @@ def main() -> None:
 
     if not gold:
         raise SystemExit(
-            "Küratör onaylı soru yok. Önce: python -m src.eval.build_gold_set --validate"
+            "Küratör onaylı soru yok. Önce: python -m src.eval.goldset.build_gold_set --validate"
         )
     if not chunk_ids:
         raise SystemExit("Chunk bulunamadı (data/processed/*.chunks.jsonl).")

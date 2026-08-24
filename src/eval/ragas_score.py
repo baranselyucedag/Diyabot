@@ -29,12 +29,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-_EVAL_DIR = Path(__file__).resolve().parent
-if str(_EVAL_DIR) not in sys.path:
-    sys.path.insert(0, str(_EVAL_DIR))
-
-from dump import RESULTS_DIR  # noqa: E402
-from metrics import KS, hit_at_k, mrr_at_k, ndcg_at_k, recall_at_k  # noqa: E402
+from src.eval.core.dump import RESULTS_DIR  # noqa: E402
+from src.eval.core.metrics import KS, hit_at_k, mrr_at_k, ndcg_at_k, recall_at_k  # noqa: E402
 
 from src.api.env import load_project_env  # noqa: E402
 from src.api.triage import _norm  # noqa: E402

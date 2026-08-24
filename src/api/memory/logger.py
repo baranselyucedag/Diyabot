@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -25,7 +26,10 @@ from src.api.memory.config import MEMORY_CONFIG
 from src.api.memory.metrics import record_event
 from src.api.memory.timeutil import utcnow
 
-LOG_DIR = Path("logs") / "memory"
+# CWD'ye DEĞİL proje köküne sabitlenir; CHATBOT_LOGS_DIR env değişkeniyle
+# override edilebilir. Testler module-global `monkeypatch.setattr` ile değiştirir.
+_PROJECT_ROOT = Path(__file__).resolve().parents[3]
+LOG_DIR = Path(os.environ.get("CHATBOT_LOGS_DIR") or (_PROJECT_ROOT / "logs" / "memory"))
 
 # Günde bir kez retention temizliği yapılır; hangi gün yapıldığını takip ederiz.
 _last_prune_day: str | None = None

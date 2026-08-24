@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
-from scripts import retention_cleanup
+from src.api.memory import retention_cleanup
 
 from src.api.memory import storage
 from src.api.memory.models import (

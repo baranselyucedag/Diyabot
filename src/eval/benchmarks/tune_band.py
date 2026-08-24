@@ -8,8 +8,8 @@ Varsayilan set: data/gold/triage_test_set.json
 Calistir (proje kokunden):
   set TRIAGE_SKIP_IMPLICIT=1
   set TRIAGE_SKIP_LLM=1
-  python -m src.eval.tune_band
-  python -m src.eval.tune_band data/gold/triage_test_set.json
+  python -m src.eval.benchmarks.tune_band
+  python -m src.eval.benchmarks.tune_band data/gold/triage_test_set.json
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 

@@ -2,7 +2,7 @@
 """Adım 2 regex smoke — Adım 3 soft-only migration dahil.
 
 Soft-only artık level=None (fusion karar verir).
-Calistir: python -m src.eval.check_regex_triage
+Calistir: python -m src.eval.checks.check_regex_triage
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ import os
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 

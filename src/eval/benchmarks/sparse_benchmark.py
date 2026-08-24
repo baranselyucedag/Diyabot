@@ -23,15 +23,13 @@ from typing import Any
 import numpy as np
 from rank_bm25 import BM25Okapi
 
-_EVAL_DIR = Path(__file__).resolve().parent
-if str(_EVAL_DIR) not in sys.path:
-    sys.path.insert(0, str(_EVAL_DIR))
+ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-from dump import attach_ci_to_row, new_run_dir, write_per_query, write_summary  # noqa: E402
-from embed_benchmark import load_chunks, load_gold  # noqa: E402
-from metrics import KS, mean_metrics, per_query_metrics  # noqa: E402
-
-ROOT = Path(__file__).resolve().parents[2]
+from src.eval.core.dump import attach_ci_to_row, new_run_dir, write_per_query, write_summary  # noqa: E402
+from src.eval.benchmarks.embed_benchmark import load_chunks, load_gold  # noqa: E402
+from src.eval.core.metrics import KS, mean_metrics, per_query_metrics  # noqa: E402
 
 SPLADE_MODEL = "naver/splade-cocondenser-ensembledistil"
 DENSE_MODEL = "BAAI/bge-m3"
@@ -283,7 +281,7 @@ def main() -> None:
     print(f"Chunks: {len(chunk_ids)} | Queries: {len(gold)} | Device: {device}")
     print("NOT: Modeller sırayla yüklenir; biri bitince GPU boşaltılır (4GB güvenli).")
     if not gold:
-        raise SystemExit("Küratör onaylı soru yok. Önce: python -m src.eval.build_gold_set --validate")
+        raise SystemExit("Küratör onaylı soru yok. Önce: python -m src.eval.goldset.build_gold_set --validate")
     if not chunk_ids:
         raise SystemExit("Chunk bulunamadı.")
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Adım 1 sayısal triage motoru — plan + güvenlik düzeltme senaryoları.
 
-Calistir: python -m src.eval.check_numeric_triage
+Calistir: python -m src.eval.checks.check_numeric_triage
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ import os
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 

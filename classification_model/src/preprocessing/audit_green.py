@@ -15,7 +15,7 @@ Ne yapar:
 
 Kullanım (repo kökünden):
     $env:NVIDIA_API_KEY = "nvapi-..."
-    python classification_model/src/PreProcessing/audit_green.py
+    python classification_model/src/preprocessing/audit_green.py
 """
 
 import json, os, re, sys, time

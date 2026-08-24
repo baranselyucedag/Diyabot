@@ -20,14 +20,14 @@ from typing import Any
 
 import numpy as np
 
-_EVAL_DIR = Path(__file__).resolve().parent
-if str(_EVAL_DIR) not in sys.path:
-    sys.path.insert(0, str(_EVAL_DIR))
+ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-from dump import attach_ci_to_row, new_run_dir, write_per_query, write_summary  # noqa: E402
-from embed_benchmark import load_chunks, load_gold  # noqa: E402
-from metrics import KS, mean_metrics, per_query_metrics  # noqa: E402
-from sparse_benchmark import (  # noqa: E402
+from src.eval.core.dump import attach_ci_to_row, new_run_dir, write_per_query, write_summary  # noqa: E402
+from src.eval.benchmarks.embed_benchmark import load_chunks, load_gold  # noqa: E402
+from src.eval.core.metrics import KS, mean_metrics, per_query_metrics  # noqa: E402
+from src.eval.benchmarks.sparse_benchmark import (  # noqa: E402
     CANDIDATE_POOL,
     DENSE_MODEL,
     RRF_K,

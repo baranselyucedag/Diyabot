@@ -50,10 +50,7 @@ from src.retrieval.retrieve import (  # noqa: E402
 )
 
 # dump.py paket dışı import kullanıyor; eval kökünü path'e ekle
-_EVAL_DIR = Path(__file__).resolve().parent
-if str(_EVAL_DIR) not in sys.path:
-    sys.path.insert(0, str(_EVAL_DIR))
-from dump import new_run_dir  # noqa: E402
+from src.eval.core.dump import new_run_dir  # noqa: E402
 
 GOLD_PATH = ROOT / "data" / "gold" / "gold_set.jsonl"
 GUARDRAIL_TRIAGES = {"RED", "REFUSE", "EMERGENCY", "RED_REFUSE"}

@@ -17,8 +17,8 @@ Checkpoint: yarıda kesilirse aynı komutla kaldığı yerden devam eder.
 
 Kullanım (repo kökünden):
     $env:NVIDIA_API_KEY = "nvapi-..."
-    python classification_model/src/PreProcessing/batch_label.py --limit 45
-    python classification_model/src/PreProcessing/batch_label.py \
+    python classification_model/src/preprocessing/batch_label.py --limit 45
+    python classification_model/src/preprocessing/batch_label.py \
         --mucize-n 2000 --green-n 0 --belirsiz-n 2500 \
         --exclude-file classification_model/data/augmented/test_v2.csv
 """

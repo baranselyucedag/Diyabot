@@ -41,13 +41,13 @@ Bu klasör **manuel** gold set yazımı içindir. LLM / otomatik aday yok.
 3. Doğrula + kota:
 
 ```bash
-python -m src.eval.build_gold_set --validate --report-only
+python -m src.eval.goldset.build_gold_set --validate --report-only
 ```
 
 4. Temizse üret:
 
 ```bash
-python -m src.eval.build_gold_set --validate
+python -m src.eval.goldset.build_gold_set --validate
 ```
 
 ## Hedef
